@@ -1,4 +1,3 @@
-
 # chapter1 イントロダクション
 
 ## 1-1 jsとは？
@@ -18,4 +17,14 @@ NNが作ったbrowser向けscript
 
 1. script言語
 1. インタプリタ型
+
+## 1-2 環境
+
+### browser
+
+FFかchromeがおすすめ。
+- FF：firebug plugin
+- chrome：ツールのデベロッパーツール
+
+### 開発環境
 
