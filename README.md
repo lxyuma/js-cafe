@@ -9,5 +9,5 @@ javascript勉強会「js-cafe」のページ
 
 - 申し込み ( http://atnd.org/events/36718 )
 
-- アジェンダ ( https://github.com/lxyuma/js-cafe/tree/master/basic-1 )
+- アジェンダ ( https://github.com/lxyuma/js-cafe/tree/master/vol-01 )
 
