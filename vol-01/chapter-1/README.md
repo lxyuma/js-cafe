@@ -11,7 +11,9 @@ NNが作ったbrowser向けscript
 1. 05年：ajaxの登場。google maps/documentで流行
 1. 06年,07年：jquery等のライブラリ普及。敷居が下がる。
 1. 09年,10年：node.js登場。server side言語として注目
-1. 最近：html5とset。desktopアプリ並みのwebアプリ？
+1. 最近その１：html5とset。desktopアプリ並みのwebアプリ？
+1. 最近その２：backbone.js等jsもMVCで整理していく方向性。
+1. 最近その３：coffee scriptでラッピング。rubyやpythonのように気軽に書ける。
 
 ### 特徴
 
@@ -47,3 +49,11 @@ FFかchromeがおすすめ。
 
 
 初めてなら、sublimeが一番いいかも。なんか、主流になりつつあるような。
+
+### node.js
+
+インストールしておくと何かと便利。
+
+$ node
+
+1行単位でjs実行して確認できる。
