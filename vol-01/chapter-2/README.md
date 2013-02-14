@@ -351,9 +351,9 @@ brタグを使う
 - true || false
  - 左辺のtrueだけで、右辺がtrueでもfalseでも、結果はtrue
   - なので、わざわざ右辺を評価しない
-  - false && true
-   - 左辺のfalseだけで、右辺がtrueでもfalseでも、結果はfalse
-    - なので、わざわざ右辺を評価しない
+- false && true
+ - 左辺のfalseだけで、右辺がtrueでもfalseでも、結果はfalse
+  - なので、わざわざ右辺を評価しない
 
 
 
