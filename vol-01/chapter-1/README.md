@@ -6,6 +6,8 @@
 
 browser向けscript言語
 
+### 歴史
+
 `js冬の時代、「失われた10年」`
 
 1) 95年：Netscape Cが開発。
