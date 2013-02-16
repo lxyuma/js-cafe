@@ -8,7 +8,7 @@ browser向けscript言語
 
 ### 歴史
 
-`js冬の時代、「失われた10年」`
+`95年〜05年：js冬の時代、「失われた10年」`
 
 1) 95年：Netscape Cが開発。
 
@@ -18,7 +18,7 @@ browser向けscript言語
 
   - 当時、動きのあるサイトの中心はjsでなく、flashやjavaアプレット。
 
-`jsの注目`
+`05年〜：jsの注目`
 
 3) 05年：ajaxの登場。
 
@@ -32,13 +32,13 @@ browser向けscript言語
 
   - ECMAScriptがcoffeeに近づくなんていう噂も...
 
-`最近のjs`
+`最近のjsの動き`
 
 7) その１：html5とset。desktopアプリ並みのwebアプリ？
 
 8) その２：backbone.js等jsもMVCで整理していく方向。
 
-
+  - jsソースがどうしても汚れるので、その整理。大規模開発でフロントとバックの明確な役割の切り分け。
 
 ### 特徴
 
