@@ -4,16 +4,37 @@
 
 ### 概要
 
-Netscape Cが作ったbrowser向けscript
+browser向けscript言語
 
-1. 95年：装飾過剰/browser毎の動作差異等であまり良いイメージ無し
-1. 97年：ECMAScriptで標準化。徐々にbrowser毎の動作違いを解消。
-1. 05年：ajaxの登場。google maps/documentで流行
-1. 06年,07年：jquery等のライブラリ普及。敷居が下がる。
-1. 09年,10年：node.js登場。server side言語として注目
-1. 09年,10年：coffee scriptでラッピング。rubyやpythonのように気軽に書ける。railsでも採用。
-1. 最近その１：html5とset。desktopアプリ並みのwebアプリ？
-1. 最近その２：backbone.js等jsもMVCで整理していく方向性。
+- js冬の時代、「失われた10年」
+
+1) 95年：Netscape Cが開発。
+
+  - 装飾過剰/browser毎の動作差異等であまり良いイメージ無し
+
+2) 97年：ECMAScriptで標準化。徐々にbrowser毎の動作違いを解消。
+
+  - 当時、動きのあるサイトの中心はjsでなく、flashやjavaアプレット。
+
+- jsの注目
+
+3) 05年：ajaxの登場。
+
+  - google maps/documentで流行
+
+4) 06年,07年：jquery等のライブラリ普及。敷居が下がる。
+
+5) 09年,10年：node.js登場。server side言語として注目
+
+6) 09年,10年：coffee scriptでラッピング。rubyやpythonのように気軽に書ける。railsでも採用。
+
+  - ECMAScriptがcoffeeに近づくなんていう噂も...
+
+- 最近のjs
+
+7) その１：html5とset。desktopアプリ並みのwebアプリ？
+
+8) その２：backbone.js等jsもMVCで整理していく方向。
 
 
 
