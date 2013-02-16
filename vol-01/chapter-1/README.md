@@ -11,7 +11,7 @@ Netscape Cが作ったbrowser向けscript
 1. 05年：ajaxの登場。google maps/documentで流行
 1. 06年,07年：jquery等のライブラリ普及。敷居が下がる。
 1. 09年,10年：node.js登場。server side言語として注目
-1. 09年,10年：coffee scriptでラッピング。rubyやpythonのように気軽に書ける。
+1. 09年,10年：coffee scriptでラッピング。rubyやpythonのように気軽に書ける。railsでも採用。
 1. 最近その１：html5とset。desktopアプリ並みのwebアプリ？
 1. 最近その２：backbone.js等jsもMVCで整理していく方向性。
 
@@ -19,8 +19,9 @@ Netscape Cが作ったbrowser向けscript
 
 ### 特徴
 
-1. script言語
+1. 動的型付け言語
 1. インタプリタ型
+1. Javaに似た構文
 1. ブラウザ上で動作
 
 ## 1-2 環境
@@ -48,18 +49,28 @@ FFかchrome
  - デメリット：高機能すぎて分かり辛い？重くて玉に落ちる？昔からあるけど、なぜかイマイチ流行らない。
 
 - Vim/Emacs：昔からある伝統的なエディタ。
- - メリット：pluginでカスタマイズが無限に出来る。テキスト編集が得意。特に、vi(vim)はunixに必ずあるので、何かと助けられる。
+ - メリット：pluginでカスタマイズが無限に出来る。テキスト編集が得意。特に、vi(vim)はunixに必ずあるので、backendエンジニアは何かと助けられる。
  - デメリット：キーバインディングや編集モードの考え方等、覚えなくてはいけない事が幾つかあり、敷居高いかも。
 
 
 初めてなら、sublimeが一番いいかも。なんか、主流になりつつあるような。
+ - 動画で無料レッスンもある。
+  - http://dotinstall.com/lessons/basic_sublimetext
 
 
 ### おまけ
 
-- jsHint
 - node.js
  - インストールしておくと何かと便利。
  - $ node //1行単位でjs実行して確認できる。
 
+- browserからjs実行
+ - chromeのデバッグツールのconsole
+ - firefox firebug pluginのconsole
+
+- リファレンス
+ - https://developer.mozilla.org/ja/docs/JavaScript
+
+- API検索
+ - http://dochub.io/#javascript/
 
