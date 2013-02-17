@@ -435,7 +435,7 @@ var宣言していたら、deleteしても値が残る。
 >
 > typeof true //'boolean'
 >
-> typeof null //'object'
+> typeof null //'object' // bug? in perfect js
 >
 > typeof undefined // 'undefined'
 >
@@ -457,6 +457,8 @@ var宣言していたら、deleteしても値が残る。
 - 基本は左から右に評価していく
 - 代入演算子(=等)、単項(! delete等)／三項演算子(a?b:c)等が、逆に評価する
  - z = x+= 3 //右から先に評価
+
+- program書くと自然とこうなるので、あまり表自体の意味が分からなくても気にしなくていいかと。
 
 # 2-5　制御命令
 
@@ -574,17 +576,29 @@ var宣言していたら、deleteしても値が残る。
 例）
 
 > > for(var x = 0; x < 10; x++) {
+>
 >   ... console.log(x)
+>
 >   ... }
+>
 >   0
+>
 >   1
+>
 >   2
+>
 >   3
+>
 >   4
+>
 >   5
+>
 >   6
+>
 >   7
+>
 >   8
+>
 >   9
 
 - 初期値0から開始して、
