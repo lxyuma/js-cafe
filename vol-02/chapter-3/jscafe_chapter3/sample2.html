@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>サンプル2</title>
+<script type="text/javascript">
+  var num = 1;
+  var num2 = new Number(6);
+  var float = new Number(1.1);
+  var float2 = 1.9;
+</script>
+</head>
+<body>
+  document.writeln(num);
+  <br>
+  <script type="text/javascript">
+  //*こういう書き方はしないでください
+    //staticプロパティ
+	document.writeln(Number.MAX_VALUE + "<br>");
+	//1.7976931348623157e+308 = 1.7976931348623157 * 10の308乗
+	document.writeln(num + "<br>");
+	document.writeln(num2 + "<br>");
+	//staticメソッド
+	document.writeln(Math.ceil(float) + "<br>");
+	document.writeln(float + "<br>");
+	document.writeln(float + float2 + "<br>");
+	document.writeln(float + num);
+  </script>
+</body>
+</html>
