@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>サンプル3</title>
+<script type="text/javascript">
+  var array = new Array("hoge","fuga","hage","fugafuga");
+  var array2 = ["hoge","fuga","hage"];
+  var array3 = new Array(1);
+</script>
+</head>
+<body>
+  <script type="text/javascript">
+  	with(document){
+    	for(var i = 0;i < array.length; i++){
+			writeln(array[i] + "<br>");
+		}
+		for(var i = 0;i < array2.length;i++){
+			writeln(array2[i] + "<br>");
+		}
+		for(var i = 0;i < array3.length;i++){
+			writeln(array3[i] + "<br>");
+		}
+		writeln(array3 + "<br>");
+		writeln(array3.push(1) + "<br>");
+		writeln(array3 + "<br>");
+		writeln(array3.concat([2,4]) + "<br>");
+		writeln(array.concat([2,4]) + "<br>");
+	}
+  </script>
+</body>
+</html>

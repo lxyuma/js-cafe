@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>サンプル５</title>
+<script type="text/javascript">
+  var str = "hoge"
+  var exp = /[0-9]{3}/
+  var str2 = "123"
+  var num = 123
+</script>
+</head>
+
+<body>
+  <script type="text/javascript">
+    document.writeln(str);
+	document.writeln(str.replace(exp,"fuga"));
+	document.writeln(str2.replace(exp,"fuga"));
+	if(str2.match(exp)){
+		document.writeln(str2);
+	}
+	if(str.match(exp)){
+		document.writeln(str);
+	}
+	document.writeln(num.toString().replace(exp,"fuga"));
+	document.writeln(str2 + 1);
+	document.writeln(parseInt(str2) + 1);
+
+  </script>
+</body>
+</html>
