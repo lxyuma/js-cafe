@@ -9,7 +9,13 @@ javascript勉強会「js-cafe」のページ
 - 今後の予定
  - https://github.com/lxyuma/js-cafe/tree/master/milestone.md
 
-### 第２回（2013/3/3）予定
+### 第３回（2013/3/17)
+
+- 申し込み
+
+http://atnd.org/events/37435
+
+### 第２回（2013/3/3）
 
 - 申し込み ( http://atnd.org/events/37045 )
 
