@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="ja">
+	<head>
+		<meta charset="utf-8">
+		<title>JsCafe vol.3</title>
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/night.css" id="theme">
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1>JsCafe vol.3</h1>
+					<h4>Chapter4 繰り返し利用するコードを一箇所にまとめる</h4>
+					<p>
+						<small>Created by <a target="blank" href="https://www.facebook.com/Katafuchi21">Shintaro Katafuchi</a> / <a target="blank" href="http://twitter.com/hotchemi">@hotchemi</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>This slide made by <a target="blank" href="http://lab.hakim.se/reveal-js/">reveal.js</a></h2>
+				</section>	
+
+				<section>
+					<h1>Agenda</h1>
+					<ol>
+						<li>関数とは</li>
+						<li>関数定義における4つの注意点</li>
+						<li>変数はどの場所から参照できるか ‐スコープ‐</li>
+						<li>引数情報を管理する ‐argumentsオブジェクト‐</li>
+						<li>高度な関数のテーマ</li>
+						<li>+α</li>
+					</ol>
+				</section>
+
+				<section>
+					<h1>#jscafe</h1>
+					<img src="img/tweet_hash.png" alt="hashtag">
+				</section>
+
+				<section>
+					<section>
+						<h2>自己紹介</h2>
+						<ul>
+							<li>Shintaro Katafuchi </li>
+							<li><a target="blank" href="http://twitter.com/hotchemi">@hotchemi</a></li>
+							<li>SIer新卒</li>
+							<li>Java, JavaScript</li>
+							<li><a target="blank" href="https://github.com/hotchemi">GitHub</a></li>
+							<li><a target="blank" href="http://hotchemi.hateblo.jp">Blog</a></li>
+						</ul>
+						<img src="img/hotchemi.png">
+					</section>
+					<section>
+						<img src="img/github.png">
+					</section>	
+				</section>
+
+				<section>
+					<h2>最近のJavaScriptへの興味</h2>
+					<ul>
+						<li>クライアントサイドJSへのテスト</li>
+						<span>→QUnit､mocha､PhantomJS…</span>
+						<li>Node.js</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>某日､JsCafeのハードルを下げる為発表を決意</h3>
+				</section>
+
+				<section>
+					<h3>二週間後…</h3>
+				</section>
+
+				<section data-state="alert">
+					<h3>俺関数の事何にも分かってなかった</h3>
+					<img src="img/death.png">
+				</section>
+
+				<section>
+					<h2>お手柔らかにお願いします</h2>
+				</section>
+
+				<section>
+					<h2>そろそろ話します</h2>
+					<img src="img/sorosoro.jpeg">
+				</section>
+
+				<section>
+					<h2>その前に一つ</h2>
+				</section>
+
+				<section>
+					<h3>Chrome developer tool</h3>
+					<img width="100%" src="img/chrome.png">
+					<p>REPL:Read-Eval-Print-Loop</p>
+					<p>その場でコード書いて確かめよう</p>
+				</section>
+
+				<section>
+					<h1>4-1 関数とは</h1>
+				</section>
+
+				<section>
+					<h2>関数とは</h2>
+					<p style="text-align:left;">･引数と呼ばれるデータを受け取り、定められた通りの処理を実行して結果を返す一連の命令群。</p>
+					<p style="text-align:left;">･一度の定義だけでプログラムら何度も呼び出し実行することができるJavaScriptのコード部分｡</p>
+				</section>
+
+				<section>
+					<h2>関数定義の方法</h2>
+					<ol>
+						<li>fucntion命令(関数宣言文)</li>
+						<li>関数リテラル(関数式)</li>
+						<li>Functionコンストラクタ</li>
+					</ol>
+				</section>
+
+				<section>
+					<h2>fucntion命令(関数宣言文)</h2>
+					<pre>
+						<code contenteditable style="font-size:40px;line-height:150%;">
+function 関数名(引数1, 引数2, ...) {
+  実行される処理1;
+  実行される処理2…;
+  [return hoge;]
+}
+						</code>
+					</pre>
+					<ul>
+						<li>return省略時はundefinedを返却</li>
+						<li>仮引数は関数内部でのみ参照可能</li>
+						<li>末尾にセミコロン不要</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>関数リテラル(関数式)</h3>
+					<pre>
+						<code contenteditable style="font-size:40px;line-height:150%;">
+var 関数名 = function (引数1, 引数2, ...) {
+  実行される処理1;
+  実行される処理2…;
+  [return hoge;]
+};
+						</code>
+					</pre>
+					<ul>
+						<li>関数を変数に代入する</li>
+						<sapn>→jsの関数はオブジェクト(データ型)</sapn>
+						<li>右辺の関数自体は名前を持たない</li>
+						<span>→匿名関数､無名関数</span>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Functionコンストラクタ</h2>
+					<pre>
+						<code contenteditable style="font-size:40px;line-height:150%;">
+var 関数名 = new Function(引数1, 引数2…, 実行する処理);
+						</code>
+					</pre>
+					<ul>
+						<li>Functionオブジェクトのコンストラクタを利用</li>
+						<li>eval</li>
+						<li>while/for内で使わない</li>
+						<li>グローバルスコープのみを提供する</li>
+						<li>普通使わない</li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>4-2 関数定義における4つの注意点</h1>
+				</section>
+
+				<section>
+					<h2>returnは途中で改行しない</h2>
+					<ul>
+						<li>JavaScriptはASI(自動セミコロン挿入)機構を持つ</li>
+						<li>意図しない戻り値を返却する可能性がある</li>
+						<li>break/continueも同様</li>
+				</section>
+
+				<section>
+					<pre>
+						<code contenteditable style="font-size:33px;line-height:150%;height: auto;">
+var triangle = function(base, height) {
+	return
+	base * height / 2;
+};
+// ↓こうなる
+return;
+base * height / 2;
+					</code>
+					</pre>
+				</section>
+
+				<section>
+					<h2>関数はデータ型の一種</h2>
+					<ul>
+						<li>関数とは参照データ型(オブジェクト)</li>
+						<li>関数を定義するとは｢変数に関数リテラルを代入する事｣と同義</li>
+					</ul>
+				</section>
+
+				<section>
+					<pre>
+						<code contenteditable style="font-size:30px;line-height:150%;">
+var triangle = function(base, height) {
+	return base * height / 2;
+};
+
+// 右辺の関数がそのまま出力される
+console.log(triangle);
+						</code>
+					</pre>
+					<li style="text-align:left;">FunctionオブジェクトのtoStringメソッドで関数が文字列に変換されて出力される</li>
+				</section>
+
+				<section>
+					<h2 style="text-align:left;">function命令は静的な構造を宣言する</h2>
+				</section>
+
+				<section>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:150%; height:100%">
+console.log('三角形の面積：' + triangle(5,2));
+
+function triangle(base, height) {
+	return base * height / 2;
+}
+						</code>
+					</pre>
+					<ul>
+						<li>関数宣言文はコードをコンパイルするタイミングで関数を登録する</li>
+						<span>→どこからでも呼び出すことが可能<span>
+						<li>関数リテラルの書式で上記を実行すると実行時エラー(TypeError)になる</li>
+						<span>→変数宣言のみ関数の先頭にホイストされる</span>
+					<ul>
+				</section>
+
+				<section>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:150%; height:100%">
+var globalVal = 'Global';
+(function() {
+  console.log(globalVal); // (1)
+  var globalVal = 'Local';
+  console.log(globalVal); // (2)
+})();
+						</code>
+					</pre>
+					<ul>
+						<li>(1)と(2)はそれぞれどう出力されるか</li>
+						<li>関数リテラルも同じ</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>4-3 変数はどの場所から参照できるか-スコープ-</h2>
+				</section>
+
+				<section>
+					<h2>変数はどの場所から参照できるか</h2>
+					<ul>
+						<li>JavaScriptのスコープはグローバルスコープとローカルスコープ</li>
+						<li>グローバル変数…全体から参照できる</li>
+						<li>ローカル変数…定義された関数内で参照できる</li>
+						<li>ブロックスコープは存在しない (JavaScript1.7でlet)</li>
+				</section>
+
+				<section>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:150%; height:100%">
+function getValue() {
+  scope = 'Local Variable';
+  return scope;
+}
+
+console.log(getValue()); // Local Variable 
+console.log(scope); // Local Variable
+						</code>
+					</pre>
+					<ul>
+					<li>varをつけない変数は全てグローバル変数になる</li>
+					<li>ブロックスコープは存在しない</li>
+					<span>→with使うならやらない方がマシ</span>
+			</ul>
+				</section>
+
+				<section>
+					<h2>ローカル変数の有効範囲</h2>
+					<p style="text-align: left">変数宣言はスコープの先頭に巻き上げ(ホイスト)されるので気をつけようという話</p>
+				</section>
+
+				<section>
+					<h3>仮引数のスコープ</h3>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:150%;">
+var value = [1, 2, 4, 8, 16];
+function deleteElement(value) {
+  value.pop();
+  return value;
+}
+
+console.log(deleteElement(value));
+console.log(value);
+						</code>
+					</pre>
+					<ul>
+						<li>基本型と参照型に注意｡</li>
+						<li>参照型の場合はメモリ上のアドレス情報を共有する</li>
+						<li>結果として同じオブジェクトを変更する事になる</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>関数リテラルとFunctionコンストラクタ</h3>
+					<li>Functionコンストラクタは常にグローバル変数を参照する</li>
+				</section>
+
+				<section>
+					<h2>4-4 引数情報を管理する‐argumentsオブジェクト‐</h2>
+				</section>
+
+				<section>
+					<ul>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:150%;">
+function showMessage(value) {
+  console.log(value);
+}
+
+showMessage();
+showMessage('山田');
+showMessage('山田', '鈴木');
+						</code>
+					</pre>
+						<li>jsの関数は引数の数をチェックしない､例外も発生しない</li>
+						<li>引数情報はargumentsオブジェクトに格納される</li>
+						<li>argumentsオブジェクトは配列風(配列ではない)</li>
+				</section>
+
+				<section>
+					<h3>引数のデフォルト値を設定</h3>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:150%;">
+function triangle(base, height) {
+	if (base == undefined) { base = 1; }
+	if (height == undefined) { height = 1; }
+	return base * height / 2;
+}
+
+console.log(triangle(5));
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3>可変長引数の定義</h3>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:120%;">
+function sum() {
+	var result = 0;
+	for (var i = 0; i < arguments.length; i++) {
+		var tmp = arguments[i];
+		if (isNaN(tmp)) throw new Error('指定値が数値ではありません：' + tmp);
+		result += tmp;
+	}
+	return result;
+}
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3>argumentsオブジェクトのプロパティ</h3>
+					<ul>
+						<li>arguments.length</li>
+						<span>→実際に渡された引数の個数を表す</span>
+						<li>arguments.callee</li>
+						<span>→関数の再起呼び出し</span>
+						<li>arguments.caller</li>
+						<span>→現在実行している関数を呼び出した関数を追える</span>					
+						<p>※calleeとcallerはECMAScript5で非推奨</p>
+					</ul>	
+				</section>
+
+
+				<section>
+					<h3>arguments.callee</h3>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:120%;">
+function factorial(n) {
+  if (n != 0) { return n * arguments.callee(n - 1); }
+  return 1;
+}
+
+console.log(factorial(5));
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h3>arguments.caller</h3>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:120%;">
+function myFunc() {
+   if (arguments.caller == null) {
+      return ("The function was called from the top!");
+   } else
+      return ("This function's caller was " + arguments.caller);
+}
+
+console.log(myFunc());
+						</code>
+					</pre>
+				</section>
+
+				<section>
+					<h1>4-5 高度な関数のテーマ</h1>
+				</section>
+
+				<section>
+					<h3>名前付き引数</h3>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:120%;">
+$(function() {
+  $('#lake-img').lake({
+    'speed': 1,
+    'scale': 0.5,
+    'waves': 10
+  });
+});
+						</code>
+					</pre>
+					<ul>
+					<li>要するにオブジェクトを引数渡す</li>
+					<li>jQueryのオプションとかでよく見るやつ</li>
+					<li>引数が多くなった場合に理解しやすい</li>
+				</section>
+
+				<section>
+					<h3>高階関数</h3>
+					<ul>
+						<li>関数の引数に関数を渡す</li>
+						<li>関数はデータ型</li>
+						<span>→関数の引数として渡したり戻したりできる!!!</span>
+					</ul>
+				</section>
+
+				<section>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:120%;">
+function each(s, e, func) {
+  for (var i = s; i <= e; i++) {
+      func(i);
+  }
+}
+each(1, 10, function(n) {
+  console.log(n);
+});
+						</code>
+					</pre>
+					<ul>
+						<li>処理の大枠はそのままに詳細な実装を差し替えることができる</li>
+						<li>再利用しない関数は匿名関数で定義すると良い感じになる</li>
+				</section>
+
+				<section>
+					<h3>スコープチェーン</h3>
+					<ul>
+						<li>スクリプト実行時にGlobalオブジェクトが生成される</li>
+						<span>→グローバル変数やグローバル関数はGlobalオブジェクトのプロパティ</span>
+						<li>関数呼び出し時にもActivatonオブジェクト(Callオブジェクト)が生成される</li>
+						<span>関数内で定義されたローカル変数を管理する為の便宜的オブジェクト</span>
+						<li>スコープチェーンとはGlobalオブジェクトとCallオブジェクトが生成順に連結したリスト</li>
+					</ul>
+				</section>
+
+				<section>
+					<img src="img/scope.png">
+					<ul>
+						<li>JavaScriptはスコープチェーンの先頭から変数を検索し､最初に見つかった値を採用する</li>
+						<li>変数名が重複した場合は上記の規則で解決される</li>
+					</ul>
+				</section>
+
+				<section>
+					<img src="img/scopechain.jpg">
+				</section>
+
+				<section>
+					<h3>クロージャ</h3>
+					<ul>
+						<li>ローカル変数を参照している関数内関数？</li>
+						<li>関数を実行時､関数が定義されたときに有効であった変数スコープを使う(レキシカルスコープ)</li>
+						<li>関数呼び出し時のスコープチェーンが保持される</li>
+					</ul>
+				</section>
+
+				<section>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:120%;">function closure(init) {
+  var counter = init;
+
+  return function() {
+    return ++counter;
+  }
+}
+var myClosure = closure(1);
+console.log(myClosure());
+console.log(myClosure());
+console.log(myClosure());
+						</code>
+					</pre>
+					<ul>
+						<li>closureの戻り値である無名関数がローカル変数counterを保持し続けている</li>
+						<li>無名関数への参照が存在している間はスコープチェーンが保持され続ける</li>
+						<li>GCの対象にならない</li>
+				</section>
+
+				<section>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:120%;">function closure(init) {
+	var counter = init;
+
+	return function() {
+		return ++counter;
+	}
+}
+var myClosure1 = closure(1);
+var myClosure2 = closure(100);
+console.log(myClosure1());
+console.log(myClosure2());
+						</code>
+					</pre>
+					<ul>
+						<li>Callオブジェクトは関数呼び出しの都度生成される為counterは共有されない</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>クロージャはシンプルなオブジェクト</h3>
+				</section>
+
+				<section>
+					<h1>+α</h1>
+				</section>
+
+				<section>
+					<ul>
+						<li>即時関数</li>
+						<li>Functionオブジェクトのプロパティ</li>
+						<li>メモ化とかカリー化とか書こうとしたけど時間無かった…</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>即時関数</h3>
+					<pre>
+						<code contenteditable style="font-size: 30px;line-height:120%;">
+(function(a,b){alert(a+b)})("hoge","piyo")
+						</code>
+					</pre>
+					<ul>
+						<li>定義した関数をその場で実行する</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Functionオブジェクトのプロパティ</h3>
+					<ul>
+						<li>length</li>
+						<span>関数に実際に渡された引数の個数</span>
+						<li>prototype</li>
+						<span>プロトタイプオブジェクトを参照</span>
+						<li>call､apply</li>
+						<span>コンテキストを指定して関数を呼び出す</span>
+						<li>toString</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>参考文献</h3>
+					<ul>
+						<li><a target="blank" href="http://alpha.mixi.co.jp/2012/10814/">mixiブログ</a></li>
+						<li><a target="blank" href="http://www.amazon.co.jp/JavaScript-%E7%AC%AC6%E7%89%88-David-Flanagan/dp/4873115736">サイ本</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+				</section>
+			</div>
+		</div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+		<script>
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+		</script>
+	</body>
+</html>
