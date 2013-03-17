@@ -24,6 +24,8 @@
 
 ### introduction
 
+幾つか変更点も有りますので、改めて。
+
 https://github.com/lxyuma/js-cafe/blob/master/intro.key
 
 ## 範囲
