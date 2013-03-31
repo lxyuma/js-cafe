@@ -12,7 +12,7 @@
 
 
 # 前半 いっせいさん
-
+https://github.com/lxyuma/js-cafe/blob/master/vol-04/slide/5-12.pdf
 
 
 # 後半　塚野
