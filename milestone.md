@@ -25,10 +25,14 @@ javascript本格入門
  - ch7.DOM
 
 - 2013/5/19
- - ch8.ajax / ch9.jQuery
+ - ch8.ajax/その他
 
-## ???
+## 第２期(6/2から)
 
-この後、何かしらのアウトプットを残す
+jQuery backbone.js
+
+
+
+
 
 
