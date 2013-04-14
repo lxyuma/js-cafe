@@ -35,11 +35,13 @@ https://docs.google.com/presentation/d/1RaycT59ARvda-7kNtqB1KU3NwgvQ_kbzl3DuZtD1
 # 最後に
 
 ## 次は
-4/28
-塚野と横田さんで
-ch-8 DOM
 
-node.js LT by片淵さん
+4/28
+
+
+* ch-8 DOM(塚野と横田さん)
+
+* node.js LT by片淵さん
 
 ## 次の次は
 
@@ -57,5 +59,13 @@ GWはちゃんと空けます！
 
  * Backbone.js ハンズオン
 
+
+## LT枠
+
+余った時間に、なんかやってくれる方、随時募集中。
+
+テーマ選定何もかも任せるので、あればFB書いて下さい。
+
+時間はあまり時間次第ですが、10分前後位を目処にして当日調整でお願いします。
 
 
