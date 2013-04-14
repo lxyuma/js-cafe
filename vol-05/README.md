@@ -39,6 +39,8 @@ https://docs.google.com/presentation/d/1RaycT59ARvda-7kNtqB1KU3NwgvQ_kbzl3DuZtD1
 塚野と横田さんで
 ch-8 DOM
 
+node.js LT by片淵さん
+
 ## 次の次は
 
 1回目は、塚野担当します。
