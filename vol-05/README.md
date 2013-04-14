@@ -12,6 +12,11 @@
 * 6-2　ブラウザオブジェクトの基本をおさえる
 * 6-3　ウィンドウの操作からダイアログ／タイマーの制御まで Windowオブジェクト
 
+
+* 村山さんの資料
+
+https://docs.google.com/file/d/0B6ncH4QbYl-DMmVWTU0yQ2pCaDQ/edit
+
 ## 後半
 
 小林さん
