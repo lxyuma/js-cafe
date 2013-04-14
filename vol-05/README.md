@@ -36,18 +36,19 @@ ch-8 DOM
 
 ## 次の次は
 
+1回目は、塚野担当します。
+
 GWはちゃんと空けます！
 
 5/19から、新生js-cafe!
 
 * デザイナー向けにjQuery
 
-** jQueryやる前に最低限必要なjsの振り返りとjQuery周りのリソース整理
+ * jQueryやる前に最低限必要なjsの振り返りとjQuery周りのリソース整理
 
 * エンジニア向けにBackbone
-を同時進行
 
-** Backbone.js ハンズオン
+ * Backbone.js ハンズオン
 
 
 

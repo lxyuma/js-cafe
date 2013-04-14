@@ -24,11 +24,9 @@ javascript本格入門
 - 2013/4/28
  - ch7.DOM
 
-- 2013/5/19
- - ch8.ajax/その他
-
 ## 第２期(6/2から)
 
+- 2013/5/19
 jQuery backbone.js
 
 
