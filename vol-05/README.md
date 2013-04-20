@@ -6,7 +6,9 @@
 
 ## 前半
 
-荻さんと村山さん
+* 荻さん
+
+https://github.com/lxyuma/js-cafe/tree/master/vol-05/js5.pdf
 
 * 6-1　イベントが発生したら処理を行う イベントドリブンモデル
 * 6-2　ブラウザオブジェクトの基本をおさえる
