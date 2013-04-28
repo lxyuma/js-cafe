@@ -23,12 +23,15 @@ https://docs.google.com/presentation/d/1D9OCIAbuuzI6Y6Y1Jhlvyi4-03apBQKa2JAkbiPs
 
 # LT
 
+http://t.co/K1W0n9ctwD
 
 # 最後
 
 ## 次は
 
 5/19
+
+jquery + backbone(塚野)
 
 
 
