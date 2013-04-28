@@ -1,0 +1,45 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Dom</title>
+<script type="text/javascript">
+<!--
+function show(e) {
+	var span = document.createElement('span');
+	span.innerHTML = e.innerHTML;
+	span.style.color = "#ff0000";
+	var view = document.getElementById('view');
+	if(view.getElementsByTagName('span').length > 0){
+		view.replaceChild(span, view.lastChild);
+	} else {
+		view.appendChild(span);
+	}
+}
+
+//-->
+</script>
+</head>
+<body>
+
+<table width="1000px">
+<tr>
+<td >
+	<li><a href="JavaScript:void(0)" onclick="show(this, '会社概要')">
+		会社概要</a></li>
+	<li><a href="JavaScript:void(0)" onclick="show(this, 'プレスリリース')">
+		プレスリリース</a></li>
+	<li><a href="JavaScript:void(0)" onclick="show(this, 'アクセス')">
+		アクセス</a></li>
+	<li><a href="JavaScript:void(0)" onclick="show(this, '採用情報')">
+		採用情報</a></li>
+	<li><a href="JavaScript:void(0)" onclick="show(this, 'お問い合わせ')">
+		お問い合わせ</a></li>
+</td>
+<td width='80%'>
+<div id="view"></div>
+</td>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,8 +1,34 @@
 
+
+
 # 今日のコンテンツ
 
 - introduction 5分
-- js入門でDOMの話 75分
-- LT1:node入門(片淵さん) 15分
-- LT2:iosocket/web framework?(古川さん) 15分
+- js入門でDOMの話 50分
+- LT:iosocket/web framework?(古川さん) 15分
 - 終了と諸連絡、片付け 10分
+
+# DOM
+
+- 前半：横田さん
+
+https://github.com/lxyuma/js-cafe/tree/master/vol-06/20130428_js_dom_yokota.pptx
+
+
+https://github.com/lxyuma/js-cafe/tree/master/vol-06/sample.html
+
+- 後半：塚野
+
+https://docs.google.com/presentation/d/1D9OCIAbuuzI6Y6Y1Jhlvyi4-03apBQKa2JAkbiPs-PI/edit?usp=sharing
+
+# LT
+
+
+# 最後
+
+## 次は
+
+5/19
+
+
+
