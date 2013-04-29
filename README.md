@@ -1,11 +1,9 @@
-js-cafe
+jsCafe
 =======
 
-# jsCafeについて
+javascriptの勉強会「jsCafe」のページです。
 
-都内で日曜18時から開催している
-
-javascriptの勉強会です。
+このページのディレクトリを辿ると、過去の各回の資料等が入ってます。
 
 # facebookグループ
 
