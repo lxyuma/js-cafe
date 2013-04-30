@@ -14,5 +14,7 @@ javascriptの勉強会「jsCafe」のページです。
 
 - ATND : http://atnd.org/users/129796
 
+# 今後の予定
 
+- https://github.com/lxyuma/js-cafe/blob/master/milestone.md
 
