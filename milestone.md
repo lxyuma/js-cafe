@@ -19,8 +19,10 @@
 **8/25** | | 
 
 
-## phase4 : (未定：)とjasmine他test関係
+## phase4
 
+日付 | 未定(Designer) | jasmine他test関係(Developer)
+--- | --- | ---
 **9/8** | | 
 **9/22** | | 
 
