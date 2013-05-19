@@ -6,8 +6,9 @@ https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3o
 ## 今日のコンテンツ
 
 - introduction 10分
-- backbone introduction 40分
-- jQuery introduction 40分
+- main
+ - backbone introduction 40分
+ - jQuery introduction 40分
 - LT
  - npm作った話(片淵さん) 10分
  - bower / yeomanの紹介(古川さん) 10分
@@ -48,14 +49,12 @@ https://docs.google.com/presentation/d/1lFQ6kwuwFsMl2MgDOko8AD1LHGt3rK8JEZ1-SUQo
 担当者の決定
 
 - jquery
- - 要素の操作
- - イベント
+ - 要素の操作：
+ - イベント：
 
 - backbone
- - Model
- - Collection
- - View
- - Event
+ - Model / Collection：
+ - View / Event：
 
 
 ## アンケート
