@@ -10,7 +10,7 @@ https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3o
  - backbone introduction 40分
  - jQuery introduction 40分
 - LT
- - npm作った話(片淵さん) 10分
+ - My Daily Node(片淵さん) 10分
  - bower / yeomanの紹介(古川さん) 10分
 - 終了、片付け、アンケート 10分
 
