@@ -29,16 +29,18 @@ https://docs.google.com/presentation/d/1lFQ6kwuwFsMl2MgDOko8AD1LHGt3rK8JEZ1-SUQo
 
 # LT
 
-## npm作った話
+## My Daily Node
 
 - 片淵さん
 
+https://speakerdeck.com/hotchemi/my-daily-node
 
 
-## bower/yeoman
+## Bower/Yeoman
 
 - 古川さん
 
+http://yosuke-furukawa.github.io/jsCafe7/public/#/title
 
 # 最後
 
@@ -60,3 +62,5 @@ https://docs.google.com/presentation/d/1lFQ6kwuwFsMl2MgDOko8AD1LHGt3rK8JEZ1-SUQo
 ## アンケート
 
 https://docs.google.com/forms/d/1mCuo-Ti0bwBzt0nVjMSMWC6zDI7J_9nzN2o-Xk_agQ0/viewform
+
+
