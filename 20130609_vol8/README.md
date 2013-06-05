@@ -7,9 +7,9 @@ https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3o
 
 - introduction 10分
 - main
- - backbone introduction 40分
+ - backbone 40分
  - 休憩 5分
- - jQuery introduction 40分
+ - jQuery 40分
 - LT
  - angular.js
  - fluent conf
