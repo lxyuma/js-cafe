@@ -28,6 +28,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 - 久保川さん
  - View / Event
+ - 資料は、この階層の下のjsCafeディレクトリ配下にあります。
 
 # jQuery
 
