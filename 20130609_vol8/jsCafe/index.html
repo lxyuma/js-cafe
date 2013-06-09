@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>jsCafe</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="mintyopera" content="Takeshi Kubokawa">
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<!-- -->
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+	</head>
+
+	<!--
+	/*
+	 * 〜 流れ 〜
+	 * Review
+	 * View
+	 * View -> Collection
+	 * Event
+	 * ToDo
+	 */
+	-->
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>jsCafe Vol.8</h1>
+					<br>
+					<h2>Backbone.js [Events & Views] </h2>
+					<br><br>
+					<p>
+						<small>Presented by <a href="http://hakim.se">Takeshi Kubokawa</a> / <a href="http://www.acrovision.jp/">Acrovision, LLC</a></small><br>
+						<small>Twitter: <a href="http://twitter.com/minty_opera">@minty_opera</a></small><br>
+						<small>Facebook: <a href="https://www.facebook.com/mintyopera">mintyopera</a></small>
+					</p>
+				</section>
+				<!-- About Me -->
+				<section>
+					<h1>About Me</h1>
+					<br>
+					<h2 class="fragment">〜 活動 〜</h2>
+						<ol>
+							<li class="fragment"><code>cocos2d-x + cocos2d for iPhone</code></li>
+							<li class="fragment"><code>Unity</code></li>
+							<li class="fragment"><strong>Qt</strong></li>
+							<li class="fragment"><code>勉強会 -> <a href="https://www.facebook.com/groups/118962681636985/">QtCafe</a></code></li>
+						</ol>
+				</section>
+				<!-- My Dream -->
+				<section>
+					<h1>My Dream</h1>
+					<br>
+						<ol>
+							<li class="fragment"><code>GUNDAM with Unity & cococs2d-x</code></li>
+							<li class="fragment"><code>jsCafe</code></li>
+							<li class="fragment"><code>Fag Studio</code></li>
+							<li class="fragment"><code>業務開発経験</code></li>
+						</ol>
+				</section>
+				<!-- Objective -->
+				<section>
+					<h1>目的</h1><br>
+					<h2>本日のプレゼンでは...</h2>
+					<br>
+					<p>Backbone.jsでWEBアプリを作る上での</p>
+					<p>パターンと流れをつかもー！！</p>
+				</section>
+				<!-- Resources -->
+				<section>
+					<h2>books & resources</h2>
+					<br>
+					<img src="images/dotinstall.png" width="350" height="250">
+					<img src="images/javascript.png" width="350" height="250">
+					<img src="images/backbone_guidebook.png" width="350" height="250">
+				</section>
+				<!-- 3 -->
+				<section>
+					<section>
+						<h1>Backbone.js</h1>
+						<h3>Review</h3>
+					</section>
+					<section>
+						<h2>What is Backbone.js ??</h2>
+						<br>
+						<p>Backbone.js is WEB Application with MVC .</p>
+					</section>
+					<section>
+						<h2>How difference with Traditional MVC and Backbone.js ??</h2>
+						<br>
+						<p>Traditional MVC Frameworks vs. Backbone.js</p>
+					</section>
+					<section>
+						<h2 class="fragment">MVC has</h2>
+							<ol>
+								<li class="fragment"><code>Model</code></li>
+								<li class="fragment"><code>View</code></li>
+								<li class="fragment"><code>Controller</code></li>
+							</ol>
+					</section>
+					<section>
+						<h2 class="fragment">Backbone.js has</h2>
+							<ol>
+								<li class="fragment"><code>Model</code></li>
+								<li class="fragment"><code>Collection</code></li>
+								<li class="fragment"><code>View</code></li>
+								<li class="fragment"><code>Event</code></li>
+								<li class="fragment"><code>Router -> View & Controller in MVC</code></li>
+							</ol>
+					</section>
+				</section>
+				<!-- View -->
+				<section>
+					<section>
+						<h1>Backbone.View</h1>
+						<br>
+						<p>〜 View & Controller in MVC 〜</p>
+						<br>
+						<ul>
+							<li>properly build a DOM tree</li>
+							<li>handle the DOM events that happened in the DOM tree</li>
+						</ul>
+					</section>
+					<section>
+						<h2>Keywords</h2>
+						<ul>
+							<li>extend</li>
+							<li>constructor / initialize</li>
+							<li><strong>el</strong> --> DOM Element</li>
+							<li><strong>$el</strong> --> has jQuery Object of "el" cashed automatically</li>
+							<li>setElement</li>
+							<li>attributes</li>
+							<li>$(jQuery)</li>
+							<li><strong>render</strong> --> 描画処理</li>
+							<li>remove</li>
+							<li>delegateEvents</li>
+							<li>UnitydelegateEvents</li>
+						</ul>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						<h2>Sample</h2>
+						<p>View</p>
+						```
+						/*  Model */
+						var Task = Backbone.Model.extend({
+							defaults:{
+								title:"Backbone.js View",
+								completed: false
+							}
+						});
+						var task = new Task();
+						/* View */
+						var TaskView = Backbone.View.extend({
+							tagName:'li',
+							template: _.template("<%- title %>"),
+							render:function(){
+								var template = this.template( this.model.toJSON() );
+								this.$el.html(template);
+								return this;
+							}
+						});
+						var taskView = new TaskView({ model: task });
+						```
+						</script>
+					</section>
+				</section>
+				<!-- Events -->
+				<section>
+					<section>
+						<h1>Backbone.Events</h1>
+						<br>
+						<p>
+							<blockquote cite="http://yuku-tech.hatenablog.com/entry/2013/05/02/121515">&ldquo;
+							BackboneプログラミングではModelやViewなどさまざまな複数のオブジェクトを使ってアプリケーションを構築していく。その際、Eventsが提供するインターフェースを用いてオブザーバパターンを駆使し、オブジェクト間の結合を疎に保つ。&rdquo;
+							</blockquote>
+						</p>
+					</section>
+					<section>
+						<h2>Observer Pattern</h2>
+						<br>
+						<p>〜 Questions 〜</p><br>
+						<ol>
+							<li class="fragment"><code>疎結合と密結合とは??</code></li>
+							<li class="fragment"><code>何故、疎結合なのか??</code></li>
+						</ol><br><br>
+						<p>↓↓</p><br>
+						<p>〜 Answer 〜</p>
+						<ol>
+							<li class="fragment"><code>アプリケーションの成長とともにオブジェクトの数が増加していくと全体を把握するのが困難になる。
+							密結合状態を放置していると、次第にアプリケーションへのちょっとした機能追加さえ困難になる
+							</code></li>
+						</ol>
+					</section>
+					<section>
+						<h3>EVENTS</h3>
+						<p>オブザーバパターンにおける発行者を作るためのもの</p><br><br>
+						<p>購買者と発行者と呼ばれるオブジェクトが登場する</p><br>
+						<p><small>購買者->発行者のイベントを購買する</small></p>
+						<p><small>発行者->購買者のメソッドを直接呼び出す</small></p>
+					</section>
+					<section>
+						<h2>Keywords</h2>
+						<ul>
+							<li>on</li>
+							<li>off</li>
+							<li>trigger</li>
+							<li>once</li>
+							<li>listenTo</li>
+							<li>stopListening</li>
+							<li>listenToOnce</li>
+						</ul>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						<p>1. 発行者をつくる</p>
+						```
+						var publisher = _.extend({}, Backbone.Events);
+						```
+						or
+						```
+						function Publisher(){};
+						_.extend(Publisher.prototype, Backbone.Events);
+						var publisher = new Publisher();
+						```
+						<br>
+						<p>2. 発行者を購買する</p>
+						```
+						/* イベントを購買する */
+						publisher.on('greet', function(){
+							console.log('hello');
+						})
+						/* イベントを発行する */
+						publisher.trigger('greet'); //=>hello
+						```
+						</script>
+					</section>
+					<section data-markdown>
+						<script type="text/template">
+						<h2>Sample</h2>
+						<p>Events</p>
+						```
+						<%- title %> <span class="command">command</span> // =>id="task-template"
+						```
+						↓
+						```
+						var Task = Backbone.Model.extend({
+							defaults:{
+								title:'Backbone Events',
+								completed:false
+							}
+						});
+						var task = new Task();
+					 
+						var TaskView = Backbone.View.extend({
+							tagName:'li',
+							events:{'click .command' : 'sayHello'},
+							sayHello:function(e){alert('hello!');},
+							template: _.template($('#task-template').html()),
+							render:function() {
+								var template = this.template(this.model.toJSON());
+								this.$el.html(template);
+								return this;
+							}
+						});
+						var taskView = new TaskView({model: task});
+						console.log(taskView.render().el);
+						$('body').append(taskView.render();
+						```
+						</script>
+					</section>
+				</section>
+				<!-- Let's Make WEB Application with Backbone.js !! --> 
+				<section>
+					<h2>Let's Make WEB Application with Backbone.js !!</h2>
+					<br>
+					⇩
+					<br><br>
+					<h1>ToDo</h1>
+				</section>
+				<!-- ToDos -->
+				<section>
+					<h2>ToDos Apps</h2>
+					<br><br>
+					<h4 class="fragment">〜 手順 〜</h4>
+						<ol>
+							<li class="fragment"><code>Model & View</code></li>
+							<li class="fragment"><code>View</code></li>
+							<li class="fragment"><code>Event</code></li>
+							<li class="fragment"><code>Add Task</code></li>
+							<li class="fragment"><code>Collection</code></li>
+							<li class="fragment"><code>Validate</code></li>
+						</ol>
+				</section>
+				<!-- ToDo 2 -->
+				<section data-markdown>
+					<script type="text/javascript">
+					<h2>Todo</h2><br>
+					<p>〜 準備 〜</p>
+					```
+					var Task = Backbone.Model.extend({ defaults: { title: 'do something', completed: false } });
+					var Tasks = Backbone.Collection.extend({ model: Task });
+					```
+					</script>	
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					<h2>Todo</h2>
+					<p>〜 Model & View 〜</p>
+					```
+					<%- title %>
+					```
+					↓
+					```
+					/* JS */
+					var TaskView = Backbone.View.extend({ 
+						tagName: 'li', 
+						template: _.template($('task-template').html());
+    					render: function() {
+        				var template = this.template(this.model.toJSON());
+        				this.$el.html(template);
+        				return this;}
+        			});
+					var TasksView = Backbone.View.extend({});
+ 					var tasks = new Tasks([{
+						title: 'task1', completed: true}, { title: 'task2'}, { title: 'task3'}]);
+					```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					<h2>Todo</h2>
+					<p>〜 View 〜</p>
+					```
+					<h1>Tasks</h1>
+					<div id="tasks"></div>
+					```
+					↓
+					```
+					var TasksView = Backbone.View.extend({
+						tagName: 'ul',
+						render:function(){
+							this.collection.each(function(task){
+								var taskView = new TaskView({model: task});
+								this.$el.append(taskView.render().el);
+							}, this);
+							return this;}
+						});
+					```
+					+
+					```
+					var tasksView = new TasksView({collection: tasks});
+					$('#tasks').html(tasksView.render().el);
+					```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					<h2>Todo</h2>
+					<p>〜 Event(taskの削除処理) 〜</p>
+					```
+					<%- title %>
+					<span class="delete">[x]</span>
+					```
+					↓
+					```
+					var TaskView = Backbone.View.extend({
+						tagName: 'li',
+						initialize:function(){
+							this.model.on('destroy',
+							this.remove, this);
+						},
+						events:{
+							'click .delete': 'destroy'
+						},
+						destroy:function(){
+							if(confirm('are you sure?')){
+								this.model.destroy();
+							}
+						},
+						remove:function(){
+							this.$el.remove();
+						},
+						template: _.template($('#task-template').html()),
+						render:function(){
+							var template = this.template(this.model.toJSON());
+							this.$el.html(template);
+							return this;
+						}
+					});
+					```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					<h2>Todo</h2>
+					<p>Add Checkbox & Click Event</p>
+					```
+					<input type="checkbox" class="toggle" <%= completed ? 'checked': '' %>>
+					<%- title %>
+					<span class="delete">[x]</span>
+					```
+					↓
+					```
+					var TaskView = Backbone.View.extend({
+						tagName: 'li',
+						initialize:function(){
+							this.model.on('destroy', this.remove, this);
+							this.model.on('change', this.remder, this);  // Add
+						},
+						events:{
+							'click .delete': 'destroy',
+							'click .toggle': 'toggle' // Add
+						},
+						destroy:function(){
+							if(confirm('are you sure?')){
+								this.model.destroy();
+							}
+						},
+						remove:function(){
+							this.$el.remove();
+						},
+						template: _.template($('#task-template').html()),
+						render:function(){
+							var template = this.template(this.model.toJSON());
+							this.$el.html(template);
+							return this;
+						}
+					});
+
+					```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					<h2>Todo</h2>
+					<p>Change Style</p>
+					```
+					.completed{
+						text-decoration:line-through; color: gray;
+					}
+					<span class="<%= completed ? 'completed' : '' %>">
+					```
+					↓
+					```
+					var TaskView = Backbone.View.extend({
+						tagName: 'li',
+						initialize:function(){
+							this.model.on('destroy', this.remove, this);
+							this.model.on('change', this.remder, this);  
+						},
+						events:{
+							'click .delete': 'destroy',
+							'click .toggle': 'toggle' 
+						},
+						destroy:function(){
+							if(confirm('are you sure?')){
+								this.model.destroy();
+							}
+						},
+						toggle:function(){
+							this.model.set('completed', this.model.get('completed')); // Add
+						}
+						remove:function(){
+							this.$el.remove();
+						},
+						template: _.template($('#task-template').html()),
+						render:function(){
+							var template = this.template(this.model.toJSON());
+							this.$el.html(template);
+							return this;
+						}
+					});
+
+					```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					<h2>Todo</h2>
+					<p>〜 Add Task 〜</p>
+					```
+					<form id="addTask">
+					<input type="text" id="title">
+					<input type="submit" value="add">
+					</form>
+					```
+					↓
+					```
+					var AddTaskView=Backbone.View.extend({
+						el:'#addTask',
+						events:{'submit':'submit'
+						},
+						submit: function(e){
+							e.preventDefault();
+							var task = new Task({title: $('#title').val()});
+							this.collection.add(task);
+						}
+					});
+					```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					<h2>Todo</h2>
+					<p>〜 Collection 〜</p>
+					```
+					var TasksView = Backbone.View.extend({
+						tagName: 'ul',
+						/* Add */
+						addNew:function(){
+							var taskView = new TaskView({model: task});
+							this.$el.append(taskView.render().el);
+						}
+						render:function(){
+							this.collection.each(function(task){
+								var taskView = new TaskView({model: task});
+								this.$el.append(taskView.render().el);
+							}, this);
+							return this;}
+						});
+					```
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/javascript">
+					<h2>Todo</h2>
+					<p>〜 Validate & error message〜</p>
+					```
+					<span id="error"></span>
+					```
+					↓
+					```
+					validate: function(attrs) {
+						if ( _.isEmpty(attrs.title) ) {
+							return 'title must not be empty';
+						}
+					},
+					initialize: function() {
+						this.on('invalid', function(model, error) {
+							$('#error').html(error);
+						})
+					}
+					```
+					↓
+					```
+					submit: function(e) {
+						e.preventDefault();
+						var task = new Task();
+						if (task.set({title: $('#title').val()}, {validate: true})) {
+							this.collection.add(task);
+						}
+					}
+					```
+
+					</script>
+				</section>
+				<section data-markdown>
+					<script type="text/template">
+					<h2>Todo</h2>
+					<p>〜 Count Left Task 〜</p>
+					```
+					<p>Tasks left: <span id="count"></span></p>
+					```
+					↓
+					```
+					validate: function(attrs){
+						if( _.isEmpty(attrs.title) ) {
+							return 'title must not be empty';
+						}
+					},
+					```
+					+
+					```
+					updateCount:function(){
+						var uncompletedTasks = this.collection.filter(function(task){
+							return !task.get('completed');
+						});
+						$('#count').html(uncompletedTasks.length);
+					},
+					```
+					</script>
+				</section>
+				<section>
+					<h1>まとめ</h1>
+					<p>とりあえず、Modelをつくる</p>
+					<p>Collectionをつくる</p>
+					<p>ViewとEventの処理をつくっていく。</p><br><br>
+					<h3>従来のMVCと比べてjsファイルだけでWEBアプリつくれるってサイコー！！</h3>
+				</section>
+				<section>
+					<h1>THE END</h1>
+					<br>
+					<h3>thank you for listening</h3>
+					<br><br>
+					<p>Takeshi Kubokawa / Acrovision, LLC
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

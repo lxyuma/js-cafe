@@ -2,6 +2,9 @@
 
 https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3odYA/edit?usp=sharing
 
+## 会場
+
+https://www.facebook.com/multimediaschoolwave?fref=ts
 
 ## 今日のコンテンツ
 
@@ -30,6 +33,7 @@ https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3o
 
 - きゆうさん
  - https://docs.google.com/presentation/d/1uf87K6sY5C_cVGy4Jm59oI0GrTJR-3vSXA1_WeB5ygI/edit#slide=id.p
+ - https://docs.google.com/file/d/0B6ncH4QbYl-DR19WVmllNnZSVVk/edit?usp=sharing
 
 # LT
 
