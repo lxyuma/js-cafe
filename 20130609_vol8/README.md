@@ -13,7 +13,7 @@ https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3o
  - 休憩 5分
 - LT
  - Angular.js or Backbone.js 10分
- - fluent conf 5分(時間調整します。)
+ - fluent conf 5分(残り時間次第で長さ調整します。)
 - 終了、片付け、アンケート 5分
 
 
@@ -37,6 +37,13 @@ https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3o
 
 http://www.slideshare.net/OmasaYusaku/angular-js-orbackbonejs
 
+## fluent conf
+
+- http://fluentconf.com/fluent2013
+
+- 資料は見せるだけ
+
+
 # 最後
 
 ## 次は
@@ -56,6 +63,7 @@ http://www.slideshare.net/OmasaYusaku/angular-js-orbackbonejs
 
 - LT
  - live coding
+ - ※おそらく、時間余るので、もう１件欲しいな
 
 
 ## アンケート
