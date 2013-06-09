@@ -10,10 +10,11 @@ https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3o
  - backbone 40分
  - 休憩 5分
  - jQuery 40分
+ - 休憩 5分
 - LT
- - angular.js
- - fluent conf
-- 終了、片付け、アンケート 10分
+ - Angular.js or Backbone.js 10分
+ - fluent conf 5分(時間調整します。)
+- 終了、片付け、アンケート 5分
 
 
 # Backbone
@@ -28,27 +29,39 @@ https://docs.google.com/presentation/d/18NcWbQmQAA9Jqy5cShafg36OM2h0X8yJd2KV4Z3o
 # jQuery
 
 - きゆうさん
-
+ - https://docs.google.com/presentation/d/1uf87K6sY5C_cVGy4Jm59oI0GrTJR-3vSXA1_WeB5ygI/edit#slide=id.p
 
 # LT
 
-## angular.js
+## Angular.js or Backbone.js
 
+http://www.slideshare.net/OmasaYusaku/angular-js-orbackbonejs
 
 # 最後
 
 ## 次は
 
-6/23
+6/23(2週後)
 
 担当者の決定
 
 - jquery
+ - アニメーション
+ - Ajax
+ - utility
 
 - backbone
+ - router
+ - Rest/sync API
+
+- LT
+ - live coding
 
 
 ## アンケート
 
+- ※前回、解散後にアンケートにしたら回答が少なかったので、再度同じアンケートさせて下さい。><
+ - 一度書いた方ももう一度、ご記入お願いします。
 
+https://docs.google.com/forms/d/1EiwY8egrxcS_nW6baBALgTXiWP3uZNq3Umpa2AyJwU4/viewform
 
