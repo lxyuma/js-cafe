@@ -16,7 +16,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
  - 休憩 5分
 - LT
  - 珍しく空です。
-- 終了、片付け、アンケート 5分
+- 終了、片付け 5分
 
 
 # jQuery
