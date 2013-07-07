@@ -28,10 +28,16 @@ https://docs.google.com/presentation/d/19SWnuS_trxM1i-CL5eRlN_tTaPFTIDx9mMRHwusX
 
 ## node.js
 
+- 古川さん
+
+
 # LT
 
 ## TypeScript
 
+- 須郷さん(@sakunyo)さん
+
+https://github.com/sakunyo/jscafe/tree/master/typescript
 
 
 # 最後
