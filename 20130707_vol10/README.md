@@ -36,7 +36,7 @@ https://docs.google.com/presentation/d/19SWnuS_trxM1i-CL5eRlN_tTaPFTIDx9mMRHwusX
 
 ## TypeScript
 
-- 須郷さん(@sakunyo)さん
+- 須郷さん
 
 https://github.com/sakunyo/jscafe/tree/master/typescript
 
@@ -46,6 +46,8 @@ https://github.com/sakunyo/jscafe/tree/master/typescript
 ## 次は
 
 7 / 21(2週間後)
+
+担当者決めたいっす。
 
 - Node.js
  - 基本的な動き：非同期/single thread/event loop
