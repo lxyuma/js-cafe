@@ -1,0 +1,5 @@
+.main {
+  margin: 10px;
+  background-color: white; }
+  .main button.submit {
+    background-color: red; }
