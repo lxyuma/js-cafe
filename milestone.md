@@ -2,11 +2,11 @@
 
 ## phase3
 
-日付 | 未定:(Designer) | node.js(Developer)
+日付 | Designer | Developer
 --- | --- | ---
-**7/7** | Sass | 作り方を一通り確認
-**7/21** | bootstrap | 基本文法(非同期/single thread/event loop/event/module/stream/buffer)
-**8/4** | grunt.js | socket/Socket.io/http/express
+**7/7** | Sass | node.js:作り方を一通り確認
+**7/21** | bootstrap | node.js:基本文法(非同期/single thread/event loop/event/module/stream/buffer)
+**8/4** | grunt.js | node.js:socket/Socket.io/http/express
 **8/25** | 予備 | jasmine/phantomjs
 
 ## phase2
