@@ -24,6 +24,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 - 古川さん
 
+https://gist.github.com/yosuke-furukawa/5942627
 
 ## Sass
 
