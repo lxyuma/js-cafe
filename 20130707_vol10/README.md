@@ -50,6 +50,8 @@ https://docs.google.com/presentation/d/19SWnuS_trxM1i-CL5eRlN_tTaPFTIDx9mMRHwusX
  - BaseCSS
  - Layout Components
  - javascript
+ - responsive design
+ - in browser design
 
 - LT
  - 太田さんからnode.jsのnetowork分析????
