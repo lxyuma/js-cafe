@@ -10,9 +10,9 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 - introduction 10分
 - main
- - Sass 40分
- - 休憩 5分
  - node.js 40分
+ - 休憩 5分
+ - Sass 40分
  - 休憩 5分
 - LT
  - TypeScript 10分
@@ -20,15 +20,16 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 # 本編
 
+## node.js
+
+- 古川さん
+
+
 ## Sass
 
 - 塚野
 
 https://docs.google.com/presentation/d/19SWnuS_trxM1i-CL5eRlN_tTaPFTIDx9mMRHwusXTPs/edit?usp=sharing
-
-## node.js
-
-- 古川さん
 
 
 # LT
