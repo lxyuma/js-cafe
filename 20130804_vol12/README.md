@@ -30,7 +30,7 @@ https://github.com/yosuke-furukawa/node_study
 
 - 田中さん
 
-https://www.dropbox.com/s/18e4l50h8kl02t8/less_slide.pdf
+http://www.slideshare.net/KatsunoriTanaka/lesscss-24938410
 
 # LT
 
