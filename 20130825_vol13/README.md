@@ -6,6 +6,16 @@ https://docs.google.com/presentation/d/1kwgp_Sfz4fvPor9t9Xvokvu8Hj8Gcva8fTgdB9yN
 
 今日と9/8まで
 
+## アプリ
+
+https://docs.google.com/spreadsheet/ccc?key=0AjYl_tC1cUdJdHJxYjRGOWlvaXNERHY5ZHVhT3lNN2c&usp=sharing
+
+飲料限定にするか否かは考えるとして、 何かのtimeline出すのは、jscafeの今迄の要素全部入ってて、いいかも。
+
+＝＞timeline作りましょう。
+
+テーマは、飲料でいいか？少しまたアンケートします。
+
 
 ## 会場
 
