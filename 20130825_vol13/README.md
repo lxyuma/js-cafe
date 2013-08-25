@@ -75,3 +75,5 @@ https://docs.google.com/presentation/d/1wTQFMxcaA9Yr78j1kQtJaU0kt_niUyh2JSwSbz7Y
  - 今日、mongoose終わらなければ、mongoose
  - phantomjs
 
+ - 誰かBackboneの便利プラグイン諸々の話してくれないかなー...
+ - 誰かfront側で役立つjs製のlibraryとか話してくれないかなー
