@@ -6,11 +6,6 @@ https://docs.google.com/presentation/d/1kwgp_Sfz4fvPor9t9Xvokvu8Hj8Gcva8fTgdB9yN
 
 今日と9/8まで
 
-- これから(10月から)
-
-10/6から
-
-https://docs.google.com/presentation/d/1UwOymCQaH_63BlycfQhUIidYmVRAVdDnxG_PpvTI9F4/edit?usp=sharing
 
 ## 会場
 
@@ -65,4 +60,5 @@ https://docs.google.com/presentation/d/1wTQFMxcaA9Yr78j1kQtJaU0kt_niUyh2JSwSbz7Y
 - LT
 
  - 今日、mongoose終わらなければ、mongoose
+ - phantomjs
 
