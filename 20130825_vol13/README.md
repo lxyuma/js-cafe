@@ -52,6 +52,8 @@ https://github.com/sakunyo/jsCafe.gruntjs
 
 ## nodeの事例
 
+https://docs.google.com/presentation/d/1S4YVqRvYCE7t60I9hiI6J9AJZrkANjOGF1Os9G6ozfc/edit#slide=id.://docs.google.com/presentation/d/1S4YVqRvYCE7t60I9hiI6J9AJZrkANjOGF1Os9G6ozfc/edit#slide=id.p
+
 ## mongoose
 
 - 塚野
