@@ -52,7 +52,7 @@ https://docs.google.com/presentation/d/1wTQFMxcaA9Yr78j1kQtJaU0kt_niUyh2JSwSbz7Y
 
 太田さん
 
-facebookに上がってますね。
+http://www.slideshare.net/otanet/
 
 # 最後
 
