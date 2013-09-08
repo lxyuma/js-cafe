@@ -27,6 +27,8 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
  - 休憩 5分
  - mongoose 20分
  - 休憩 5分
+- LT
+ - 太田さんの可視化の話
 - 次のLTテーマ決めのためのアンケート
 - 終了、片付け 5分
 
@@ -43,6 +45,12 @@ https://docs.google.com/presentation/d/1wTQFMxcaA9Yr78j1kQtJaU0kt_niUyh2JSwSbz7Y
 - 塚野
 
 https://docs.google.com/presentation/d/1wTQFMxcaA9Yr78j1kQtJaU0kt_niUyh2JSwSbz7Yr_Q/edit?usp=sharing
+
+# LT
+
+## データ可視化とD3.js
+
+太田さん
 
 # 最後
 
