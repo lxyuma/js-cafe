@@ -38,7 +38,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 塚野
 
-https://docs.google.com/presentation/d/1wTQFMxcaA9Yr78j1kQtJaU0kt_niUyh2JSwSbz7Yr_Q/edit?usp=sharing
+https://docs.google.com/presentation/d/18M9Ijn2yEm1E4X8HJTCV9rWyY03tKxwaF6d8ZkUiQEs/edit?usp=sharing
 
 ## mongoose
 
