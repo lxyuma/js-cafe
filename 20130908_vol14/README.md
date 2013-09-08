@@ -52,6 +52,8 @@ https://docs.google.com/presentation/d/1wTQFMxcaA9Yr78j1kQtJaU0kt_niUyh2JSwSbz7Y
 
 太田さん
 
+http://www.slideshare.net/otanet/
+
 https://www.facebook.com/download/522074721214043/LT_%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%AF%E8%A6%96%E5%8C%96%E3%81%A8D3.js_jsCafe_20130908_otanet.pptx
 
 # 最後
