@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="../base.js" type="text/javascript"></script>
+<script type="text/javascript">
+  global.hoge = 1;
+  global.hogehoge = "sample";
+  global.fuga =  function(input){
+    return input + 10;
+  }
+
+  //こんな感じにも書けます
+  global.page = global.page || {};
+  global.page.sample  = 100;
+  
+</script>
+<title>グローバル変数サンプル</title>
+</head>
+<body>
+<script type="text/javascript"> 
+  document.write(global.hoge);
+  document.write("<br>");
+  document.write(global.hogehoge);
+  document.write("<br>");
+  document.write(global.fuga(100));
+  document.write("<br>");
+  document.write(global.page.sample);
+</script>
+</body>
+</html>
