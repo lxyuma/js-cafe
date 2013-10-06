@@ -1,7 +1,6 @@
 var click_event = function(){
   var isShow = true;
   var all = $("#hoge");
-  console.log(all);
   //こういう風にしてはダメ$("#click_event1");
   var click_event1 = all.find("#click_event1");
   click_event1.off();
