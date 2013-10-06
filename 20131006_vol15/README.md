@@ -47,6 +47,12 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 # 最後
 
+また、LTテーマのアンケート。
+
+結果は、公開します。
+
+https://docs.google.com/forms/d/1ozVVPvo8gCHSM7TPQk0Q-Uic9gv9jzlyNvjquscKfaM/viewform
+
 ## 次は
 
 11 / 10
