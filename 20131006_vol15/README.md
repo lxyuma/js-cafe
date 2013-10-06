@@ -57,7 +57,7 @@ https://docs.google.com/forms/d/1ozVVPvo8gCHSM7TPQk0Q-Uic9gv9jzlyNvjquscKfaM/vie
 
 ## 次は
 
-11 / 17
+11 / 10
 
 - LT
 
