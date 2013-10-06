@@ -24,6 +24,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 ## 「jsとjQueryの基本だけどうまい使い方、実用例」「 HTMLの正しい書き方(パフォーマンスチューニング系)」
 
 - 小林さん
+ - https://github.com/lxyuma/js-cafe/tree/master/20131006_vol15/kobayashi-jscafeLT
 
 ## Road map of Data Analysis for Visualization with D3.js シリーズ その2：ロードマップの提示
 
