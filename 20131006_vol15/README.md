@@ -14,7 +14,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
  - 20分：Road map of Data Analysis for Visualization with D3.js シリーズ その2：ロードマップの提示
 - 休憩(5分)
 - 後半LT
- - 10分：backbone.marionetteを使ってみた（仮）
+ - 10分：Backbone pluginのご紹介 backbone.picky編
  - 10分：WebRTC・PeerJSを利用したビデオチャットアプリ開発
  - 20分：end to end testing
 - 終了、片付け 5分
@@ -30,9 +30,10 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 - 太田さん
  - http://www.slideshare.net/otanet
 
-## backbone.marionetteを使ってみた（仮）
+## Backbone Pluginのご紹介backbone.picky編
 
 - 福原さん
+ - https://docs.google.com/presentation/d/1z-PC2s3_QV_TjCi-Pk4NyfR0LZOa4LmOC2mezewL2Zg/edit#slide=id.p
 
 ## WebRTC・PeerJSを利用したビデオチャットアプリ開発
 
@@ -55,7 +56,7 @@ https://docs.google.com/forms/d/1ozVVPvo8gCHSM7TPQk0Q-Uic9gv9jzlyNvjquscKfaM/vie
 
 ## 次は
 
-11 / 10
+11 / 17
 
 - LT
 
