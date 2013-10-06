@@ -8,16 +8,16 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 ## 今日のコンテンツ
 
-- 10分(18:00)introduction
+- 15分(18:00)introduction
 - 前半LT
- - 30分(18:10)：「jsとjQueryの基本だけどうまい使い方、実用例」「 HTMLの正しい書き方(パフォーマンスチューニング系)
- - 20分(18:40)：Road map of Data Analysis for Visualization with D3.js シリーズ その2：ロードマップの提示
-- 05分(19:00)休憩
+ - 30分(18:15)：「jsとjQueryの基本だけどうまい使い方、実用例」「 HTMLの正しい書き方(パフォーマンスチューニング系)
+ - 20分(18:45)：Road map of Data Analysis for Visualization with D3.js シリーズ その2：ロードマップの提示
+- 05分(19:05)休憩
 - 後半LT
- - 05分(19:05)：Backbone pluginのご紹介 backbone.picky編
- - 10分(19:10)：WebRTC・PeerJSを利用したビデオチャットアプリ開発
- - 20分(19:20)：end to end testing
-- 10分(19:40)終了、片付け
+ - 05分(19:10)：Backbone pluginのご紹介 backbone.picky編
+ - 10分(19:15)：WebRTC・PeerJSを利用したビデオチャットアプリ開発
+ - 20分(19:25)：end to end testing
+- 10分(19:45)終了、片付け
 
 # 本編
 
