@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script src="../base.js" type="text/javascript"></script>
+<script src="./callback.js" type="text/javascript"></script>
+<title>callback</title>
+</head>
+<body>
+<script type="text/javascript">
+  global.callback_standart("hoge",function(input){
+    document.write(input);
+  });
+  document.write("<br><br>");
+  global.callback_each("hoge",function(input){
+    document.write(input);
+	document.write("<br>");
+  });
+</script>
+</body>
+</html>
