@@ -36,6 +36,8 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 - 福原さん
 
+- https://docs.google.com/presentation/d/14-62GIfY0ZHBpMOYHLYyjYpFY-Jc9AAh_mZlga8ZZps/edit
+
 # KineticJSを使ってみたお話(仮)
 
 
