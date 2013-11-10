@@ -28,6 +28,8 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 - みまさん
 
+- http://www.slideshare.net/mima_v/20131110-j-queryui
+
 # jQuery Mobileでモバイル対応してみた
 
 - 柳田さん
@@ -39,7 +41,6 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 - https://docs.google.com/presentation/d/14-62GIfY0ZHBpMOYHLYyjYpFY-Jc9AAh_mZlga8ZZps/edit
 
 # KineticJSを使ってみたお話(仮)
-
 
 - 鹿島さん
 
