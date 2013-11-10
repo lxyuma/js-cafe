@@ -58,7 +58,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 # 次回予告
 
-12/15(日) 18:00〜
+12/22(日) 18:00〜
 
 - クリスマス年末最後にふさわしい面白いヤツ、ライトなヤツがいっぱいあるといいなー。
 
