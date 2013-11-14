@@ -34,6 +34,8 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 - 柳田さん
 
+- https://speakerdeck.com/tyanagida/brief-introduction-of-jquery-mobile
+
 # Backbone pluginのご紹介 #2
 
 - 福原さん
