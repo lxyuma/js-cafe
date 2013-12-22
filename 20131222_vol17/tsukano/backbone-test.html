@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>javascriptでTDD mocha chai sinon.js</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+      body {
+        font-family: 'Droid Serif';
+        font-size: 25px;
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      h1 { font-size: 2.5em; }
+      h2 { font-size: 2em; }
+      h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 2em;
+      }
+    </style>
+
+  </head>
+  <body>
+    <textarea id="source">
+
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# Backboneでテスト
+DOM分離とテストダブル
+
+Ryuma Tsukano([@lxyuma](https://twitter.com/lxyuma))
+
+---
+
+layout: false
+
+# 経緯
+
+Backbone.jsでTDD書く時に、Model/Collection系は、
+
+今迄のバックエンドのテストと一緒で、そんなに悩まない。
+
+ところが、Viewのテストはfrontend特有の事(DOM/template等)があり、
+
+色々知らないと、結構面倒臭いし、悩ましい。
+
+=> Backbone.Viewのテストで悩ましい所をどう解決していくか書く。
+
+---
+
+# 内容
+
+- Backbone.Viewのテストの基本形
+- 悩み１： javascript vs html
+	- 答え：DOM分離
+- 悩み２：検証方法が素直に書けない
+	- 答え：テストダブル
+	- イベント
+	- サーバー通信
+	- アニメ
+	- local変数
+
+
+---
+
+
+# Viewのテストの基本形
+
+```javascript
+describe("TodoView", function() {
+
+  // ①初期化
+  beforeEach(function() {
+    this.view = new TodoView();
+  });
+
+  // ②メソッド毎にテスト
+  describe(“methods”, function() {
+    it(“should xxxx“, function() {
+      // this.view.yourMethod();
+
+      // ③検証
+      // expect(this.view.ui.title.is(‘:visible’)).should.be.true;
+    });
+  });
+});
+```
+
+---
+
+# 概説
+
+- ①初期化
+	- 大体、皆、ここで、Viewをnew
+	- render入れてもいいかと。
+		- ※特にMarionette使うとrender自分で書かないので、renderもbeforeに入れて良い(その際、initialize自体のテスト書く為に、ネストした中のbeforeにrender入れると良い)
+- ②メソッド単位で切り分け
+	- 関数の実行(eventを経由しない※後述)
+	- 検証
+- ③検証
+	- 大抵Viewの$elをchk(直接$(selector)書かない※後述)
+
+---
+
+
+# 悩み１
+
+## jsだけでなく、html/DOM迄考えなくては行けない事
+
+---
+
+# サーバーサイドのテスト
+
+サーバーサイドのTDDは、以下のたった２つのソースだけを行き来して書けば良かった。
+
+- ターゲットソース
+- テストソース
+
+とても、シンプルだし、何よりTDDに集中できる。実は恵まれていた。
+
+BacboneもModelやCollectionは、同じイメージで書けるのだがViewは少し違う。
+
+---
+
+## Backbone.Viewのテスト
+
+BackboneのViewのテストは、ターゲットとテストソース以外に、
+
+- ターゲットのhtmlや
+- 場合に寄ってはテスト用のhtml等のファイルも
+
+行き来が必要になったりする。これらも含めてTDDしようとすると、以下の問題に直面する。
+
+---
+
+# 問題１
+
+## htmlとターゲットソースだけで完結してしまう問題
+
+- 実際にhtml上で動かさないと分からない事、調整しないと行けない事も多々あるので、ファイル横断していく内に、html <=> ターゲットソースの行き来がメインになってしまい、開発フローの中でのテストの必然性が薄れてテスト習慣がつかなくなる。
+
+---
+
+# 問題２
+
+## htmlがデザイン変更等から多くのテスト変更を伴う問題
+
+- htmlはデザイン等頻繁に変わる事あるので、テスト書いてもDOM操作を中心に頻繁に調整が必要になる。(expext($(‘#aaa’).text()).toBe(‘aaa’)みたいなの一個ずつ直す必要あるし、test用のでかいtemplateとか準備してるとマジ地獄。実装直すなら、テストも直すのは当然なのだが、量が多いと大変。)
+
+---
+
+# 問題３
+
+## 集中力の問題
+
+- 単純に対象ソースとテストソース見比べれば良かったサーバーサイドのTDDと比べて、frontendのTDDはあっちこっちファイル見比べてTDD以外の考慮が多いので、TDDしようとする集中力とやる気を削ぐ。この集中できないのが一番問題。
+
+---
+
+# jsのTDDに集中するには。
+
+TDD続けるには、とにかく、作業ファイルを
+
+- ターゲットソースと、
+- テストソースの
+
+２つだけにするのが良いと思う。
+
+そのために、DOM/htmlを分離する
+
+※もし、厳密に全部通過を確認するなら事後でいい。初めから意識する必要はない。
+
+---
+
+# DOM/html分離
+
+- DOM
+	- テストコードにDOMセレクタ書かない
+	- テストコードからは、Marionette.View.ui経由で掴む
+	- view.events経由せず、直接関数実行
+- Template
+	- test用fixture template出来るだけ使わない(修正が面倒)
+	- 最悪、使っても、1,2行の断片程度で
+- ターゲットとなるViewも整理する
+	- 元のViewは、el内だけを扱う。(el以外への変更はtriggerして、別Viewに)
+	- View内でelを指定しない。相対Viewにする。(これで、テスト用template要らなくなるはず)(Marionetteに沿って書くとRegion使うので、そうなってるはず。)
+
+---
+
+# sample
+
+```javascript
+// View
+var TheButton = Backbone.Marionette.View.extend({
+  // elは指定しない
+  // ui定義して、DOMアクセスは全てここからにする(変更時、ここを起点に直す)
+  // ※省略してるけどthis.bindUIElements忘れずに
+  ui: { menu: “#menu” },
+  onClickShowMenuButton: function(){
+    this.ui.menu.show();
+  }
+});
+
+// mocha
+  // test用のfixture template出来るだけ使わない
+  before(function(){ this.view = new TheButton()}
+  it(‘should show menu’, function(){
+    // event経由せず直接メソッド実行
+    this.view.onClickShowMenuButton();
+    // ui経由でDOMを掴む
+    expect(this.view.ui.menu.is(‘:visible’)).to.be.true;
+```
+
+---
+
+# 悩み２
+
+## 検証を素直に書けない
+
+例えば、イベント等挟むと、何書いていいのかよくわからなくなる。
+
+イメージ的には、関数実行後に、素直に``` expect(this.view).haveCalledEvent(‘changeName’)```と１行書けたら良いのに
+
+勿論、書けない。イベント以外にこういう素直にテスト書けない所がいっぱいある
+
+何があるか？整理するためViewに書いてる事を整理すると
+
+---
+
+# Viewに書いてる主要な事
+
+- 初期化(initilize関数内)
+	- イベントbind関係(initialize関数内でmodel/collectionや、global object等に対して)
+	- インスタンス変数の初期化系
+- viewの関数(eventsでbindした独自の関数等)
+	- instance変数の変更
+	- ifやfor等組み合わせたロジック
+	- メソッド呼び出し
+	- イベントbind/trigger
+	- サーバー通信
+	- DOM操作(アニメ)
+	- window.confirm()等
+	- local変数(model等)のCRUD
+
+---
+
+# testどう書くか？
+
+この中でも、インスタンス変数の変更関係やif/forのロジックは、サーバーサイドでよく書くテストと同じイメージ。悩まない。
+
+メソッド呼び出しも、spy/stubs使えそうなのは、すぐイメージ湧く通り。
+
+window.confirmも、```this.stub(window, "confirm").returns(false);```でいい。
+
+DOM操作は、jQueryでチェックし直す必要がある。※DOMの分離
+
+問題は、それ以外残った所。
+
+---
+
+# 残った要素
+
+- イベントbind/trigger
+- サーバー通信
+- アニメ
+- local変数(model等)
+
+これら、全部、結局テストダブルしないといけない。
+
+- 対象を掴むため
+- テスト対象の単純化のため
+
+---
+
+# イベントbind/trigger
+
+- 事前にspy => trigger(or bind)されたかチェックという流れ
+
+- view自身へのイベント
+	- view自身にspy
+- Backbone.TestingはBackbone.Eventにbindしてた
+
+---
+
+# trigger
+
+```javascript
+describe('onClickTrigger', function(){
+    beforeEach(function(){
+        this.eventSpy = sinon.spy();
+        this.view.on("jikken", this.eventSpy);
+        // もし、modelなら、this.view.model.on(‘sync’, this.eventSpy)
+    });
+    it('should execute trigger', function(){
+        this.view.onClickTriggerButton();
+        expect(this.eventSpy.called).to.be.ok;
+    });
+});
+```
+
+---
+
+# サーバ通信のfake
+
+- callbackやbackend処理等簡略化してjsテストに集中するためtestdouble
+  1. addy本では、$.ajaxにspyしてる
+  1. sinon.createFakeServer()派もいる(最も良いが設定が面倒)
+  1. Backbone Testing本は、YourModel.prototypeのメソッドにstub
+- 基本、1。通信の近くまで改修してたら2。個別に処理挟んでたら3。
+
+---
+
+# $.ajaxにspy
+
+```javascript
+describe('onClickSave', function(){
+    beforeEach(function(){
+        this.ajaxSpy = sinon.spy(Backbone.$, 'ajax');
+    });
+    it('should save', function(){
+        this.view.onClickSaveButton();
+        expect(this.ajaxSpy.called).to.be.ok;
+    });
+});
+```
+
+---
+
+# success/errorは？
+
+stubsのyield使う(yieldsTo)
+
+```javascript
+// これをbefore等で挟んでおく
+sinon.stub($, 'ajax').yieldsTo('success', {
+  count: '100',
+  message: 'oh boy, 100 pickles!'
+});
+
+```
+
+---
+
+# アニメ
+
+何秒か待ってもいいが、fakeTimer使うとすぐ終わる。
+
+```javascript
+describe('onClickAnimeButton', function(){
+    beforeEach(function(){ this.clock = sinon.useFakeTimers(); });
+    afterEach(function(){ this.clock.restore(); });
+    it('should hide', function(){
+        expect(this.view.ui.animeButton.is(':visible')).to.be.ok;
+        this.view.onClickAnimeButton();
+        this.clock.tick(2000);
+        expect(this.view.ui.animeButton.is(':visible')).to.not.be.ok;
+    });
+});
+```
+
+---
+
+# local変数のチェック
+
+- ここでmockが役立つ！
+  - モデル.prototypeにmock、関数内local変数も検証可
+
+```javascript
+var Task = Backbone.Model.extend({ url: "/tasks" });
+var TestView = Backbone.View.extend({
+  jikken: function(){
+    var test = new Task();
+    test.save();
+  }});
+
+// before
+this.mock = sinon.mock(Task.prototype);
+this.expect = this.mock.expects(‘sync’);
+this.model = new Task();
+
+// it()
+this.model.save()
+this.mock.verify
+```
+
+---
+
+# もっと重要な事
+
+ちょっと書いてて思ったんだけど、
+
+- Backbone.View(特にmarionette)の関数=小粒
+  - なんか、最小単位のUTが効果的と思えない
+- これより、関数同士の組み合わせやstatus変化の方がbuggy => そっちに注力
+  - initialize => events => 関数Aだけでなく、
+  - initialize => events => 関数B => status変更 => 関数Aもありえる。
+
+
+---
+
+# 参考
+
+- blog
+	- [Testing Backbone applications with Jasmine and Sinon part 1/2/3](http://tinnedfruit.com/2011/03/03/testing-backbone-apps-with-jasmine-sinon.html)
+	- [Test-driven Backbone.js - Part 1/2/3](http://blog.thepete.net/blog/2013/01/23/test-driven-backbone-dot-js-part-one/)
+	- [dailyJSのtutorial](http://dailyjs.com/2013/02/07/backbone-tutorial-11/)
+- 書籍
+	- [addyosmani氏のbackbone本](http://addyosmani.github.io/backbone-fundamentals/#tdd-with-backbone)
+	- [Backbone.js Testing](http://backbone-testing.com/)
+- slide
+	- [NYTimesのTest Driven Backbone Development](https://speakerdeck.com/landau/test-driven-backbone-development)
+	- [Unit Testing JavaScript and Backbone.JS](https://speakerdeck.com/dmosher/unit-testing-javascript-and-backbonejs)
+- source
+	- [BackboneTesting本のcode](https://github.com/ryan-roemer/backbone-testing/) ※100点とは思わないけど、一番参考になる。
+
+
+
+
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-0.5.9.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
