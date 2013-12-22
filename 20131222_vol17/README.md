@@ -13,7 +13,8 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 - 18:30 - jsで実際に役立った関数型プログラミング
 - 18:45 - クリスマス社内プロジェクトの紹介
 - 18:55 - 休憩
-- 19:05 - jsでTDD/Backboneでテスト
+- 19:05 - androidのwebviewでのjs
+- 19:10 - jsでTDD/Backboneでテスト
 - 19:45 - 終わり
 
 最後が塚野で、時間調整するので、皆さんそんなに時間意識しなくても大丈夫です！(伸びても、早く終わってもお気にせず)
@@ -34,6 +35,10 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # クリスマス社内プロジェクトの紹介(仮)
 
 - きゆうさん
+
+# androidのwebviewでのjs
+
+- 小林さん
 
 # jsでTDD / BackboneでTDD
 
