@@ -27,6 +27,8 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # style docco
 
 - 須郷さん
+  - https://github.com/sakunyo/jscafe.styledocco
+  - https://github.com/sakunyo/jscafe.styledocco/raw/master/styledocco.pdf
 
 # jsで実際に役立った関数型プログラミング
 
@@ -39,14 +41,17 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # androidのwebviewでのjs
 
 - 小林さん
+  - https://www.facebook.com/l.php?u=https%3A%2F%2Fdocs.google.com%2Fpresentation%2Fd%2F1O7995tfxXqfjKmVYpYTFs-D-4_VMFtfiYLSxyD20CH8%2Fedit%23slide%3Did.g25fd1261a_018&h=kAQEvWuMx
 
 # jsでTDD / BackboneでTDD
 
 - 塚野
+  - https://raw.github.com/lxyuma/js-cafe/master/20131222_vol17/tsukano/test.html
+  - https://raw.github.com/lxyuma/js-cafe/master/20131222_vol17/tsukano/backbone-test.html
 
-
+DLして、開いて下さい> <
 
 # 次回予告
 
-
+- 2/2
 

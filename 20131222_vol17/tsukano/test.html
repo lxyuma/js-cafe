@@ -943,22 +943,12 @@ stubsは作られる前の関数の振る舞いを定義するために使う。
 # stub sample
 
 ```javascript
-// 公式P
-test("test should call all subscribers, even if there are exceptions" : function(){
-    var message = 'an example message';
-    var error = 'an example error message';
+var stub = sinon.stub(yourModel, "getHundreds");
 
-    var stub = sinon.stub().throws();
-    var spy1 = sinon.spy();
+// 引数1で来たら、100の戻り値を返す
+stub.withArgs(1).returns(100);
 
-    PubSub.subscribe(message, stub);
-    PubSub.subscribe(message, spy1);
-
-    PubSub.publishSync(message, undefined);
-
-    assert(spy1.called);
-    assert(stub.calledBefore(spy1));
-}
+console.log(yourModel.getHundreds(1)); // 100
 ```
 
 ---
