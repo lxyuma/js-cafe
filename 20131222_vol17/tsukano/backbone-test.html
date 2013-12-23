@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>javascriptでTDD mocha chai sinon.js</title>
+    <title>Backboneのテスト悩みと解決</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
       @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
@@ -129,7 +129,7 @@ class: center, middle, inverse
 ---
 
 # Backboneでテスト
-DOM分離とテストダブル
+悩みと解決まで/ DOM分離とテストダブル
 
 Ryuma Tsukano([@lxyuma](https://twitter.com/lxyuma))
 
@@ -139,15 +139,11 @@ layout: false
 
 # 経緯
 
-Backbone.jsでTDD書く時に、Model/Collection系は、
+Backbone.jsでTDD書く時に、
 
-今迄のバックエンドのテストと一緒で、そんなに悩まない。
+特にViewのテストがfrontend特有の事があり悩ましい
 
-ところが、Viewのテストはfrontend特有の事(DOM/template等)があり、
-
-色々知らないと、結構面倒臭いし、悩ましい。
-
-=> Backbone.Viewのテストで悩ましい所をどう解決していくか書く。
+- ここでは、Backbone.Viewを中心に、テストで悩ましい所をどう解決していくか書く。
 
 ---
 
@@ -195,13 +191,14 @@ describe("TodoView", function() {
 
 - ①初期化
 	- 大体、皆、ここで、Viewをnew
-	- render入れてもいいかと。
-		- ※特にMarionette使うとrender自分で書かないので、renderもbeforeに入れて良い(その際、initialize自体のテスト書く為に、ネストした中のbeforeにrender入れると良い)
+	- 場合によってはrender入れてもいいかと。
+		- ※特にMarionette(その際、initialize自体のテスト書く為に、nest内のbeforeにrender入れると良い)
 - ②メソッド単位で切り分け
-	- 関数の実行(eventを経由しない※後述)
+	- 関数の実行(eventを経由しない方が良い※後述)
 	- 検証
 - ③検証
-	- 大抵Viewの$elをchk(直接$(selector)書かない※後述)
+	- 大抵Viewの$elをchk($(selector)書かない方が良い※後述)
+- 各環境のgeneratorやeditorのsnippetsに登録すると良い
 
 ---
 
@@ -320,11 +317,17 @@ var TheButton = Backbone.Marionette.View.extend({
 
 ## 検証を素直に書けない
 
-例えば、イベント等挟むと、何書いていいのかよくわからなくなる。
+例えば、event挟むと、何書いていいかわからなくなる。
 
-イメージ的には、関数実行後に、素直に``` expect(this.view).haveCalledEvent(‘changeName’)```と１行書けたら良いのに
+image的には関数実行後に、素直に
 
-勿論、書けない。イベント以外にこういう素直にテスト書けない所がいっぱいある
+``` 
+expect(this.view).haveCalledEvent('changeName') //imageです
+```
+
+と書けたらいいのに。 勿論、書けない。
+
+イベント以外にも、素直に検証書けない所がいっぱい
 
 何があるか？整理するためViewに書いてる事を整理すると
 
@@ -332,30 +335,25 @@ var TheButton = Backbone.Marionette.View.extend({
 
 # Viewに書いてる主要な事
 
-- 初期化(initilize関数内)
-	- イベントbind関係(initialize関数内でmodel/collectionや、global object等に対して)
-	- インスタンス変数の初期化系
-- viewの関数(eventsでbindした独自の関数等)
-	- instance変数の変更
-	- ifやfor等組み合わせたロジック
-	- メソッド呼び出し
-	- イベントbind/trigger
-	- サーバー通信
-	- DOM操作(アニメ)
-	- window.confirm()等
-	- local変数(model等)のCRUD
+- インスタンス変数の初期化/変更
+- メソッド呼び出し
+- イベントbind/trigger
+- サーバー通信
+- DOM操作(アニメ)
+- window.confirm()等
+- local変数(model等)のCRUD
 
 ---
 
 # testどう書くか？
 
-この中でも、インスタンス変数の変更関係やif/forのロジックは、サーバーサイドでよく書くテストと同じイメージ。悩まない。
+この中で、instance変数の変更はサーバーサイドと同じ。悩まない。
 
-メソッド呼び出しも、spy/stubs使えそうなのは、すぐイメージ湧く通り。
+メソッド呼び出しも、spy/stubs使えそうなのは、すぐimage湧く通り。
 
 window.confirmも、```this.stub(window, "confirm").returns(false);```でいい。
 
-DOM操作は、jQueryでチェックし直す必要がある。※DOMの分離
+DOM操作は、jQueryでチェックし直せば良い(それぞれのTestFW上でjQuery操作補助するライブラリ使うと楽)
 
 問題は、それ以外残った所。
 
@@ -368,48 +366,43 @@ DOM操作は、jQueryでチェックし直す必要がある。※DOMの分離
 - アニメ
 - local変数(model等)
 
-これら、全部、結局テストダブルしないといけない。
+これら、全部、色んな事情で結局テストダブルが必要。
 
-- 対象を掴むため
-- テスト対象の単純化のため
+- 色んな事情
+  - 対象を掴むため
+  - テスト対象の単純化のため
 
 ---
 
-# イベントbind/trigger
+# イベントtrigger
 
-- 事前にspy => trigger(or bind)されたかチェックという流れ
-
-- view自身へのイベント
-	- view自身にspy
-- Backbone.TestingはBackbone.Eventにbindしてた
+- イベント掴むために、
+  - event用spyを準備
+  - 実行されたかチェック
 
 ---
 
 # trigger
 
 ```javascript
-describe('onClickTrigger', function(){
-    beforeEach(function(){
-        this.eventSpy = sinon.spy();
-        this.view.on("jikken", this.eventSpy);
-        // もし、modelなら、this.view.model.on(‘sync’, this.eventSpy)
-    });
-    it('should execute trigger', function(){
-        this.view.onClickTriggerButton();
-        expect(this.eventSpy.called).to.be.ok;
-    });
-});
+// before
+this.eventSpy = sinon.spy();
+this.view.on("jikken", this.eventSpy);
+// もし、modelなら、this.view.model.on(‘sync’, this.eventSpy)
+
+// it
+this.view.onClickTriggerButton();
+expect(this.eventSpy.called).to.be.ok;
 ```
 
 ---
 
 # サーバ通信のfake
 
-- callbackやbackend処理等簡略化してjsテストに集中するためtestdouble
-  1. addy本では、$.ajaxにspyしてる
-  1. sinon.createFakeServer()派もいる(最も良いが設定が面倒)
-  1. Backbone Testing本は、YourModel.prototypeのメソッドにstub
-- 基本、1。通信の近くまで改修してたら2。個別に処理挟んでたら3。
+- 色々やり方ある
+  1. $.ajaxやsyncにspy/stub
+  1. sinon.createFakeServer()(最も良いが設定が面倒)
+  1. CRUD各メソッドにstub(instance掴めなければmodel.prototype)
 
 ---
 
@@ -429,16 +422,17 @@ describe('onClickSave', function(){
 
 ---
 
-# success/errorは？
+# saveにstubs
 
-stubsのyield使う(yieldsTo)
+- stubsのyield(yieldsTo)使うと成功/失敗も掴める
 
 ```javascript
-// これをbefore等で挟んでおく
-sinon.stub($, 'ajax').yieldsTo('success', {
-  count: '100',
-  message: 'oh boy, 100 pickles!'
-});
+// before
+this.stub = sinon.stub(this.view.model, "save");
+this.stub.yieldsTo('success', {name: "taro"});
+
+// it
+expect(this.stub.called).to.be.true;
 
 ```
 
@@ -446,19 +440,17 @@ sinon.stub($, 'ajax').yieldsTo('success', {
 
 # アニメ
 
-何秒か待ってもいいが、fakeTimer使うとすぐ終わる。
+- 何秒か待っても書けるが、fakeTimer使うとすぐ終わる。
+  - useFakeTimers()してtick(ミリ秒)だけ
 
 ```javascript
-describe('onClickAnimeButton', function(){
-    beforeEach(function(){ this.clock = sinon.useFakeTimers(); });
-    afterEach(function(){ this.clock.restore(); });
-    it('should hide', function(){
-        expect(this.view.ui.animeButton.is(':visible')).to.be.ok;
-        this.view.onClickAnimeButton();
-        this.clock.tick(2000);
-        expect(this.view.ui.animeButton.is(':visible')).to.not.be.ok;
-    });
-});
+// before
+this.fakeTimer = sinon.useFakeTimers();
+
+// it
+this.view.onClickAnimeButton();
+this.fakeTimer.tick(2000);
+expect(this.view.ui.animeButton.is(':visible')).to.not.be.ok;
 ```
 
 ---
@@ -494,9 +486,11 @@ this.mock.verify
 
 - Backbone.View(特にmarionette)の関数=小粒
   - なんか、最小単位のUTが効果的と思えない
+  - sinonで苦労して書くコストに見合わない
 - これより、関数同士の組み合わせやstatus変化の方がbuggy => そっちに注力
   - initialize => events => 関数Aだけでなく、
   - initialize => events => 関数B => status変更 => 関数Aもありえる。
+  - 非同期fetchしてる間にタブ切り替えてどうなるとか
 
 
 ---
