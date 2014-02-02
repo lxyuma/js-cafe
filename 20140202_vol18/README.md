@@ -40,7 +40,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # Ractive.js
 
 - 塚野
-    - 今書いてます><
+    - このGithubページの上部から、ractivejs.html
 
 # 次回予告
 

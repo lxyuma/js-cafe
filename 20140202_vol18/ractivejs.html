@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ractive.js</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <style type="text/css">
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+      body {
+        font-family: 'Droid Serif';
+        font-size: 25px;
+      }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+      }
+      h1 { font-size: 2.5em; }
+      h2 { font-size: 2em; }
+      h3 { font-size: 1.6em; }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      li p { line-height: 1.25em; }
+      .red { color: #fa0000; }
+      .large { font-size: 2em; }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      code {
+        -moz-border-radius: 5px;
+        -web-border-radius: 5px;
+        background: #e7e8e2;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+      .pull-left {
+        float: left;
+        width: 47%;
+      }
+      .pull-right {
+        float: right;
+        width: 47%;
+      }
+      .pull-right ~ p {
+        clear: both;
+      }
+      #slideshow .slide .content code {
+        font-size: 0.8em;
+      }
+      #slideshow .slide .content pre code {
+        font-size: 0.9em;
+        padding: 15px;
+      }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      /* Slide-specific styling */
+      #slide-inverse .footnote {
+        bottom: 12px;
+        left: 20px;
+      }
+      #slide-how .slides {
+        font-size: 0.9em;
+        position: absolute;
+        top:  151px;
+        right: 140px;
+      }
+      #slide-how .slides h3 {
+        margin-top: 0.2em;
+      }
+      #slide-how .slides .first, #slide-how .slides .second {
+        padding: 1px 20px;
+        height: 90px;
+        width: 120px;
+        -moz-box-shadow: 0 0 10px #777;
+        -webkit-box-shadow: 0 0 10px #777;
+        box-shadow: 0 0 10px #777;
+      }
+      #slide-how .slides .first {
+        background: #fff;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        z-index: 1;
+      }
+      #slide-how .slides .second {
+        position: relative;
+        background: #fff;
+        z-index: 0;
+      }
+
+      /* Two-column layout */
+      .left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+      }
+        .left-column h2:last-of-type, .left-column h3:last-child {
+          color: #000;
+        }
+      .right-column {
+        width: 75%;
+        float: right;
+        padding-top: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+
+name: inverse
+layout: true
+class: center, middle, inverse
+
+---
+
+# Ractive.js入門
+
+---
+
+layout: false
+
+# 概要
+
+Reactive.jsというjsでReactive UIをbuildするためのlibraryの話をする。
+
+話の流れは以下の通り
+
+- reactive programming
+- ractive.js
+- 他のframeworkとの比較
+- Backboneに入れてみる
+
+---
+
+
+# Reactive Programmingとは？
+
+古くは、2003年頃から日本のblogでも幾つか言及されてる模様
+
+去年、更に色々と動きが出てきた。
+
+- 2013/7 [ガートナーの2013年のreport](https://www.gartner.com/doc/2560015)で扱われてる
+- 2013/9 [リアクティブマニフェスト](http://www.reactivemanifesto.org/)が出た。これ[訳されてる方](http://kimitok.hateblo.jp/entry/2014/01/20/220438)がいた。
+- 2013/9 [infoQの記事](http://www.infoq.com/jp/news/2013/09/reactive-programming-emerging)見ると大体の流れや概要が分かる
+
+---
+
+# バズりと意味の広がり
+
+- なんか徐々にバズり感がある
+- 他のバズりワードと同じように意味が広義に、より抽象的になってきてる
+- マニフェストにあるような広義な意味でのReactiveは一旦今日は置いておく
+
+---
+
+# Reactive programmingの例
+
+[maoeのブログ](http://maoe.hatenadiary.jp/entry/20100109/1263059731)を参考にさせて頂くと
+
+```javascript
+var a = 1;
+var b = a + 1;
+a = 10;
+console.log(b) // => 11
+```
+
+- aの値の変化からbの値が動的に変化した。
+	- ※勿論、今のjsはこんな動きしない。
+- 一見、何言ってるか意味分からないかもしれないが、以下のExcelのセル計算と同じimage
+	- A1セルに ```=B2+C3```と書くと
+	- A1セルの内容はB2とC3が加算されて、動的に書き換えられる。
+
+---
+
+# 結局Reactive programmingとは
+
+- 時間や外部入力と共に変化する値や計算を、
+- プログラムするのではなく、
+- システム側が見えない所で反応(reactive)してくれるもの
+
+用途は、色々あるようだが、GUIプログラミングに向いてる。
+
+ここまで、[maoeのブログの記事](http://maoe.hatenadiary.jp/entry/20100109/1263059731)の要約。ありがとうございました。
+
+---
+
+# GUIとReactive
+
+- [Wikipedia](http://en.wikipedia.org/wiki/Reactive_programming)見てみると、一例としてMVCアーキテクチャが書かれてる。
+	- リアクティブがModelとViewの相互連携を可能にする
+- こう書くとデータバインディングを連想するが。
+    - [stackoverflow:データバインディングとリアクティブの違いは何？](http://stackoverflow.com/questions/20193624/what-is-difference-between-two-way-data-binding-and-reactivity)
+        - Reactive：汎用的な概念
+        - data bindings：Reactiveな視点で作られた機能
+
+---
+
+# Reactive Programmingとjavascript
+
+jsでのReactive関連libはRxJS/bacon.js/knockout/Meteor等色々ある。
+
+アプローチも様々。
+
+偶々、「BackboneとReactive」で検索してると
+
+なんか、面白そうな[Github issue](https://github.com/jashkenas/backbone/issues/2772)ひっかかった。
+
+---
+
+# いい加減な訳
+
+[Github issue](https://github.com/jashkenas/backbone/issues/2772)
+
+```
+Q: Ractive.jsとBackbone使うのって良いIdeaじゃない？
+
+我々のアプリはHandlebarsとBackbone使ってる。
+幾つかのViewの中に維持の必要な多くの要素があるがお互い非常に強く結びついている。
+これはsubviewに分ける事を困難にしている
+
+私はDOM要素を操作する事やレガシーコードをリファクタリングする事に疲れた。
+そこで、Ractive.jsを見つけた。
+これは、これらの問題を解決してくれるために開発されている。
+それは、Angularみたいだが、ただAngular程にクレージーではない。
+
+Angularは開発中の殆どの問題を壊してくれるように思う。それは素晴らしい事かもしれない。
+しかし、私のようないくらかの人々にとって学習する事が厳しい。
+
+そこで、私の質問は、次の通り。
+・Backboneの中で、Ractive.jsと一緒にtemplateを使う形で置換するのは良いか？
+```
+
+---
+
+# Ractive.jsとは
+
+theguardian.comで新しいアプリを作るために開発されたらしい(去年13年の夏頃)
+
+- ReactiveなUIをビルドするjsのライブラリ
+- 特定のフレームワークを強制させる事はしない
+    - なので、Backboneと組み合わせようが自由(実際、公式pageにbackboneとの連携例もあがってる)
+
+---
+
+# つづり
+
+- ちなみに、つづりは、「ract」ive.js
+    - reactiveでないので、ご注意を
+    - React / reactive.js等等同じ様な名前の物がいっぱいある
+
+---
+
+# 情報源
+
+- [公式ページ](http://www.ractivejs.org/)
+	- [60秒でわかる超入門tutorial](https://github.com/RactiveJS/Ractive/wiki/60-second-setup)
+	- [tutorial 1hくらいかかる](http://learn.ractivejs.org/hello-world/1/)
+- [todomvc](http://www.rich-harris.co.uk/Ractive-TodoMVC/)
+- [classmethodさんの日本語入門記事](http://dev.classmethod.jp/client-side/ractive-js/)
+
+---
+
+# 特徴
+
+公式pageによると
+
+- データバインディング
+	- 美しい宣言的なシンタックス
+- イベントハンドリング
+	- 泣かせたり髪をかきむしったりさせない
+- 柔軟でパフォーマンスの高いアニメや移動ができる
+
+根本的にDOM操作のアプローチと異なる。
+
+---
+
+# angularあるでしょ
+
+- 非常にangularに近い感じ。
+    - 実際、かなり意識されて作られている
+    - 開発時の呼称がAnglebarsだったらしい(Angular + Handlebars)
+- 大きな違いは、DI等特殊な事をractive.jsはやってない事
+    - ractiveは非常にsimpleな文法になっていて覚える事は少ない(1hでtutorial終わる)
+
+---
+
+# knockoutがあるでしょ
+
+- ractive.js = databindできる軽量のlibrary
+- 立ち位置がknockoutそっくり
+    - [ここの記事のコメント](http://www.theguardian.com/info/developer-blog/2013/jul/24/ractive-js-next-generation-dom-manipulation)でも戦ってる
+    - 作者はknockoutの文法が気に入らないらしい(ractiveはkoと比べてもsimple)
+- [ここの比較記事](http://versus.com/ja/knockout-js-vs-ractive-js)によると
+    - ractiveは、internalなDOM持っていて全要素のre-renderせず、DOMを1つずつでなくグループでまとめ非同期に更新するといった内部構造がより最適化されてる所が違うらしい
+- 後、そもそもractiveはMV* FWでないので、ModelとかViewとかいう言葉が出てこない
+
+---
+
+# data-bindingsの2つの方式
+
+
+- dirty-checking(ex. angular)
+	- 前の値比較,変化あれば変更eventをfire
+    - pojoを扱えてsimpleな点がメリットだが、処理として無駄多い
+- change listeners(ex.knockout)
+	- 動的な処理をする関数の中にある監視objを追跡してその関数を入れ
+    - pojoでなく決まった口から呼ぶ必要があり、また、個別にfireするので複数まとめて処理する時に効率的でない
+- 他、色々メリデメがある。※参考：[stackoverflow](http://stackoverflow.com/questions/9682092/databinding-in-angularjs) [slide](http://www.slideshare.net/basarat1/mvvm-knockout-vs-angular)
+    - ractive.jsは後者(まとめて処理は出来る※多分update)
+
+
+---
+
+# 要するに
+
+- Ractive.js = 複雑な所がないAngular
+- Ractive.js = knockoutと立ち位置が近く、仕組みも近いが、もっとsimple
+
+---
+
+# ractive.jsを始める
+
+- 公式pageのsampleをやってみると[こんな感じ(gist)](https://gist.github.com/lxyuma/8753581)
+
+- js
+
+```javascript
+    var ractive = new Ractive({
+      el: "#result",
+      template: "#myTemplate",
+      data: {
+        user: '太郎',
+        messages: { total: 11, unread: 4 }
+      }
+    });
+```
+
+---
+
+# sample(html側)
+
+- 出力先
+
+```html
+    <div id="result">
+    </div>
+```
+
+- テンプレート
+
+```html
+  <script id='myTemplate' type="text/ractive">
+    <p>こんにちわ{{user}} さん。
+      <strong>{{messages.unread}} 件の未読メッセージがあります。</strong>
+    </p>
+  </script>
+```
+
+---
+
+# sampleを動かす
+
+- sampleを動かすと、templateが出力されている
+- console上で、以下をやってみるとbrowserの値も変わってるはず
+	- ```ractive.set('messages.unread', 5);```
+
+---
+
+# sampleのjsを見てみる
+
+```javascript
+    var ractive = new Ractive({
+      // el : 出力先の要素
+      el: "#result",
+
+      // template : 表示の際元となるテンプレート
+      template: "#myTemplate",
+
+      // data : Reactiveに値を変えて行きたいデータの固まり
+      data: {
+        user: '太郎',
+        messages: { total: 11, unread: 4 }
+      }
+    });
+```
+
+- ぱっと見もごちゃごちゃしてなく、たった３つのプロパティしかない。
+
+---
+
+# sampleのtemplateを見てみる
+
+```html
+  <script id='myTemplate' type="text/ractive">
+    <p>こんにちわ{{user}} さん。
+      <strong>{{messages.unread}} 件の未読メッセージがあります。</strong>
+    </p>
+  </script>
+```
+
+- mustacheの書き方を採用している
+	-  ```{{ }}``` で変数等
+	- この例には書いてないが、mustacheの他の文法がそのまま使える(#等)
+- jsで定義していたdataの中身を変数として使ってる
+	- ```user``` と ```messages.unread```
+
+---
+
+# consoleでやった事を振り返る
+
+```
+ractive.set('messages.unread', 5);
+```
+
+- 作ったinstanceのdata内の変数に値をsetしてる
+	- 単純に内部の値が変わるだけでなく、画面上の要素も変わってる
+
+---
+
+# ractiveのデータの取得変更の整理
+
+- 取得したい
+	- ```ractive.get( ‘messages.unread’ )```
+- 変更したい
+	- 方法１）前述の ```ractive.set('messages.unread', 5);```
+	- 方法２）```reactive.update(‘message’)```
+
+変更の方法２の例
+
+```javascript
+var unread = reactive.get(‘message.unread’);
+unread = 9; 
+reactive.update(‘message.unread’);
+```
+
+---
+
+# 仕組み 
+
+- [※参考](http://flippinawesome.org/2013/08/19/ractive-js-expressions-and-the-new-wave-of-reactive-programming/)
+
+    - Ractiveは、jsonみたいなツリーの中でtemplateをparse
+    - 式を見るとAbstractSyntaxTreeを作る(参照を抜き出す)
+    - mustacheをrenderする時参照を解決
+
+```javascript
+Ractive.parse( '{{i+1}}' );
+
+// {
+//   t: 2,          // mustacheの型
+//   x: {           // 式
+//     r: [ "i" ],  // 式の中の参照
+//     s: "${0}+1"  // 参照を含む式
+//   }
+// }
+```
+
+---
+
+# 仕組み
+
+- 単純な文字展開(遅いeval繰り返し)する仕組みと比べて冗長なようだが、
+    - 関数を一度で作るだけで済む
+	- メモリに効果的だし、パフォーマンスも良い
+
+---
+
+# dynamic attributeの使い道
+
+- 例えば、cssの切り替えもできる
+
+```html
+<p style='color: {{color}}; font-size: {{size}}em; font-family: {{font}};'>
+  {{greeting}} {{recipient}}!
+</p>
+```
+
+---
+
+# 関数
+
+- 勿論、関数も追加できる。
+	- 例えば、数値を整形するformat関数を作る
+
+
+```html
+<p>The population of {{country}} is {{ format(population) }}.</p>
+```
+
+```javascript
+  data: {
+    country: 'the UK',
+    population: 62641000,
+    format: function ( num ) {
+      if ( num > 1000000000 ) return ( num / 1000000000 ).toFixed( 1 ) + ' billion';
+      if ( num > 1000000 ) return ( num / 1000000 ).toFixed( 1 ) + ' million';
+      if ( num > 1000 ) return ( Math.floor( num / 1000 ) ) + ',' + ( num % 1000 );
+      return num;
+    }
+```
+
+---
+
+# イベント
+
+- 1クッション挟む(proxy event)
+	- html側の属性に ```on-イベントハンドラ名=‘イベント名’```
+	- js側で ```reactive.on(‘イベント名’, function(event) {})```
+
+```html
+<button on-click='activate'>Activate!</button>
+```
+
+```javascript
+ractive.on( 'activate', function ( event ) {
+  alert( 'Activating!' );
+});
+```
+
+---
+
+# mustache系で出来る事
+
+mustacheで出来る一通りの事がRactive.jsでも出来る
+
+
+```html
+// true,falseチェック = #
+{{#signedIn}}
+  <p>You’ve logged in</p>
+{{/signedIn}}
+// ※これで、ractive.data.signedIn = trueの時に、表示される
+```
+
+```html
+// not = ^
+{{^signedIn}}<!-- not-signed-in block -->{{/signedIn}}
+// これで、ractive.data.signedIn = falseの時に、表示される
+```
+
+---
+
+# list操作
+
+これもmustache
+
+```html
+  {{#people}}
+    <tr>
+      <td>{{name}}</td>
+      <td>{{age}}</td>
+    </tr>
+  {{/people}}
+```
+
+```javascript
+// reactiveの中
+data : {
+  people : [
+    {name : “taro”, age : 18},
+    {name : “hanako”, age : 20} ] }
+```
+
+---
+
+# listに追加
+
+```javascript
+people.push(newPerson);
+```
+
+他にpop/shift/等準備されてる
+
+---
+
+# BackboneとRactive.js
+
+[公式pageの例](http://examples.ractivejs.org/backbone)にもある位、setで使うのに問題は無さげ。
+
+- Backbone adapterを使うと、ModelとViewを繋いでくれるみたい
+	- src見ると、Model/Collectionのchangeイベントにひっかけてractive.setしてる
+
+---
+
+# 色んな妄想
+
+- （´-`）.｡oO（これ、listも勝手にsyncしてるからMarionetteのCollectionViewとか全部要らなくなるんじゃね？
+- （´-`）.｡oO（これ、viewにそのまま変数貼付けれるからViewのstate管理が綺麗になるんじゃね？
+- （´-`）.｡oO（これ、jsから見て完全にDOM分かれてるからテストし易いようなimage。
+
+Backbone的に可能性を感じる
+
+---
+
+# [書いてみた](https://github.com/lxyuma/reactive-bk)
+
+- 要するに、BackboneがAngularっぽくなった。
+
+
+```javascript
+    ractive.TaskListView = Ractive.extend({
+        template: "#task-list-template",
+        init: function(options){
+            this.set('taskList', []);
+            this.on({
+                onClickTaskItem: function(e, item){
+                    item["finished"] = true;
+                    this.update("taskList");
+                }
+            });
+        },
+        pushNewTask: function(task){
+            this.get('taskList').push(task.attributes);
+        }
+```
+
+---
+
+# 書いてみたhtml
+
+```html
+         <div id="task-list">
+            <script id="task-list-template" type="javascript/ractive">
+                <ul>
+                {{#taskList}}
+                    <li on-click="onClickTaskItem:{{this}}" style="{{.finished ? 'text-decoration:line-through;' : ''}}">
+                        {{name}}
+                    </li>
+                {{/taskList}}
+                </ul>
+            </script>
+        </div>
+```
+
+---
+
+# 変わった事
+
+- Before:Backboneで親子階層書くのが手間(Marionette使ってもやっぱり大変)
+	- After:ractiveのmustacheのlist表示で一発
+- Before:BackboneでView内のstate管理(Modelにする程ではないような物)が大変だった
+	- After:ractiveのtemplate内の分岐で解決
+- Before:BackboneのView内でDOM操作が絡まる(Marionette.View.ui使ってもカオス)
+    - After:ractiveはデータだけ触れば良いのでごちゃごちゃしない(test書き易そう)
+
+---
+
+# もう一度言うけど
+
+- Angularでよくね？
+    - DI等キモい所が無いから良い
+- knockoutでよくね？
+    - [knockoutとBackbone繋ぐ例](http://stackoverflow.com/questions/7992431/using-knockoutjs-backbone-together)は少ないが、(knockback?そこまで要らない)ractiveは小さいので簡単に入れれる。(公式でも例あるし)
+
+---
+
+# 個人的な感想(良い所)
+
+- 要するに、elとtemplateとdataの３つとmustacheなので、すげーsimple。不可解な所が無い
+- Backbone
+    - Marionetteもstickitも要らなくなるかも…
+    - Backbone.Viewと併用するなら$elの生成timing考えないといけないかもだが、ractiveでeventもまとめて書ける事等から、そもそもBackbone.View要らなくなりそう(routerとmodel通信部分とevent連携だけBackboneから借りる??)
+
+
+---
+
+# 駄目な所
+
+- 個人的にmustache自体普段書かないからキモい
+    - mustacheへの独自機能追加もキモい(```../```で親階層辿れる??)
+    - templateエンジン自分で選べないのは苦痛
+- 情報量の少なさと使ってる人の少なさ
+
+
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-0.5.9.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
