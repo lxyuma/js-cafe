@@ -35,6 +35,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # konashiをいじってみた
 
 - 須郷さん
+    - このGithubのページの上部から、konashi.pdfをDL!
 
 # Three.js
 
