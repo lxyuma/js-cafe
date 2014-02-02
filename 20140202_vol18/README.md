@@ -10,12 +10,11 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 - 18:00 - intro(10min)
 - 18:10 - Backbone.jsのモジュールを作って見ました
-- 18:20 - knockout.js
-- 18:30 - konashi
-- 18:40 - three.js
-- 19:00 - 休憩
-- 19:05 - Ractive.js
-- 19:40 - 終わり
+- 18:20 - konashi
+- 18:30 - three.js
+- 18:50 - 休憩
+- 19:00 - Ractive.js
+- 19:30 - 終わり
 
 最後が塚野で、時間調整するので、皆さんそんなに時間意識しなくても大丈夫です！(伸びても、早く終わってもお気にせず)
 
@@ -27,10 +26,6 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # Backbone.js のモジュールを作ってみました
 
 - 萩原さん
-
-# knockout.js
-
-- 福原さん
 
 # konashiをいじってみた
 
