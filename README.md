@@ -5,8 +5,6 @@ javascriptの勉強会「jsCafe」のページです。
 
 このページのディレクトリを辿ると、過去の各回の資料等が入ってます。
 
-- phase1 : jsの基本的な話
-- phase2 : jquery/node/backbone
 
 # facebookグループ
 
@@ -15,9 +13,6 @@ javascriptの勉強会「jsCafe」のページです。
 
 # 申し込み
 
-- ATND : http://atnd.org/users/129796
+- http://jscafe.doorkeeper.jp/
 
-# 今後の予定
-
-- https://github.com/lxyuma/js-cafe/blob/master/milestone.md
 
