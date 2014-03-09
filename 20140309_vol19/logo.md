@@ -5,7 +5,7 @@ jsCafeのロゴの件、２つimageあります。
 
 - カフェ店員の萌え系2頭身か3頭身の女の子が、転んで運んでたコーヒーこぼして、jsCafeのロゴにぶっかけるimage。
 - このimage
-    - 
+    - https://raw.github.com/lxyuma/js-cafe/master/20140309_vol19/sample.jpg
 
 # 2つめ
 
