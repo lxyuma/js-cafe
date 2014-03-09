@@ -35,11 +35,12 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # masonry.js
 
 - 小林さん
+- http://ticklecode.com/present/140309_jscafe_Masonry/#/
 
 # CSS Architecture
 
 - 田中さん
-
+- http://www.slideshare.net/KatsunoriTanaka/css-architecture-with-oocss-smacss-bem
 
 # AngularJS
 
@@ -48,6 +49,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # koa
 
 - 古川さん
+- https://speakerdeck.com/yosuke_furukawa/koa
 
 # fabric.js
 
