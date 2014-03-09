@@ -65,5 +65,5 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # 次回
 
 - 5/ 11(sun)
-
+- これから16:00から開始
 
