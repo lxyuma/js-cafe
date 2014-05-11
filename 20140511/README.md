@@ -46,6 +46,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # colorbox
 
 - 池田さん
+- http://www.slideshare.net/kazuyukiikeda18/colorbox-jscafe-20140511
 
 # jsのGC
 
