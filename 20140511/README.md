@@ -14,7 +14,6 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 - 16:35 - CreateJs
 - 16:45 - テスト駆動ゲーム開発をJavaScriptで実践
 - 16:55 - 休み
-- 17:05 - 非プログラマがknodeknockoutに参加してnodejsに触れてきたここ半年のお話
 - 17:15 - colorbox
 - 17:25 - GC
 - 17:45 - 終了(もし、20分位時間余れば、jQuery)
