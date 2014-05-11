@@ -36,6 +36,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # CreateJs
 
 - 佐藤さん
+- http://www.slideshare.net/ssusera7b1a1/createjsjscafe20
 
 # テスト駆動ゲーム開発をjsで実践
 
