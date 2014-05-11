@@ -51,6 +51,7 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # jsのGC
 
 - 塚野
+- https://github.com/lxyuma/js-cafe/blob/master/20140511/gc.html
 
 # jQuery pair reading
 
@@ -64,6 +65,6 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 # 次回
 
-- 5/ 11(sun)
+- 6/ 29(sun)
 - これから16:00から開始
 
