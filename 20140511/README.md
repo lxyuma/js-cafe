@@ -26,10 +26,12 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 # vegas
 
 - 小林さん
+- http://www.slideshare.net/YoshinoriKoba/140511-js-cafevegasbackgroundjqueryplugin
 
 # eXcale
 
 - 泉谷さん
+- http://lt20140511.excale.net/#/
 
 # CreateJs
 
@@ -37,7 +39,8 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 # テスト駆動ゲーム開発をjsで実践
 
-- 竹内さん
+-  竹内さん
+- http://www.slideshare.net/yuusuketakeuchi96/java-script-in-jscafe20
 
 # colorbox
 
