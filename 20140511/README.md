@@ -51,6 +51,11 @@ https://www.facebook.com/multimediaschoolwave?fref=ts
 
 - 塚野
 - 20分以上時間余ったらやります。
+- 進め方
+    - 隣の席の方とペアに
+    - どれを中心に見るか、ファイルだけ決める
+    - 読んでgist等にメモ
+    - 最後、時間あれば、発表
 
 # 次回
 
