@@ -41,6 +41,7 @@ https://docs.google.com/presentation/d/145z_ierAIrYSyeQoRR3ql88WLIO7fX1TzYDRZdx0
 # svg
 
 - 小林さん
+- http://linkis.com/ticklecode.com/prese/YdKQi
 
 # testem
 
