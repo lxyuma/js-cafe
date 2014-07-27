@@ -27,11 +27,12 @@ https://docs.google.com/presentation/d/145z_ierAIrYSyeQoRR3ql88WLIO7fX1TzYDRZdx0
 # vue.js
 
 - ライオンさん
+- http://www.slideshare.net/lion-man/vuejs
 
 # angular
 
 - 佐藤さん
-
+- http://www.slideshare.net/ssusera7b1a1/angularjscafe21
 
 # D3.js
 
