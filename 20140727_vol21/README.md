@@ -13,7 +13,6 @@ https://docs.google.com/presentation/d/145z_ierAIrYSyeQoRR3ql88WLIO7fX1TzYDRZdx0
 - 18:25 - angular
 - 18:35 - D3.js
 - 18:45 - svg
-- 18:55 - testem
 - 19:05 - 休憩
 - 19:15 - enchant.js
 - 19:25 - node.js
@@ -43,10 +42,6 @@ https://docs.google.com/presentation/d/145z_ierAIrYSyeQoRR3ql88WLIO7fX1TzYDRZdx0
 - 小林さん
 - http://linkis.com/ticklecode.com/prese/YdKQi
 
-# testem
-
-- やまきさん
-
 # enchant.js
 
 - 竹内さん
@@ -65,6 +60,5 @@ https://docs.google.com/presentation/d/145z_ierAIrYSyeQoRR3ql88WLIO7fX1TzYDRZdx0
 
 # 次回
 
-- 6/ 29(sun)
-- これから16:00から開始
+- 9/28
 
